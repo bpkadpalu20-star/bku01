@@ -119,7 +119,7 @@ tr:hover {
                                         <td style="width: 100px; text-align: right">{{ number_format($Objek1->nilai_realisasiobjek, 0, '.', ',') }}</td>
                                     </tr>
 
-                                    @foreach($RincianObjekPenerimaan as $key => $Rincian1)
+                                    @foreach($ROPenerimaan as $key => $Rincian1)
                                         @if ($Rincian1->id_opd == $Opd1->id_opd)
                                         @if ($Rincian1->bulan_id == $Opd1->bulan_id)
                                         @if ($Rincian1->id_kelompok == '1')
@@ -223,7 +223,7 @@ tr:hover {
                                         <td style="width: 100px; text-align: right">{{ number_format($Objek2->nilai_realisasiobjek, 0, '.', ',') }}</td>
                                     </tr>
 
-                                    @foreach($RincianObjekPenerimaan as $key => $Rincian2)
+                                    @foreach($ROPenerimaan as $key => $Rincian2)
                                         @if ($Rincian2->id_opd == $Opd1->id_opd)
                                         @if ($Rincian2->bulan_id == $Opd1->bulan_id)
                                         @if ($Rincian2->id_kelompok == '2')
@@ -329,7 +329,7 @@ tr:hover {
                                         <td style="width: 100px; text-align: right">{{ number_format($Objek3->nilai_realisasiobjek, 0, '.', ',') }}</td>
                                     </tr>
 
-                                    @foreach($RincianObjekPenerimaan as $key => $Rincian3)
+                                    @foreach($ROPenerimaan as $key => $Rincian3)
                                         @if ($Rincian3->id_opd == $Opd1->id_opd)
                                         @if ($Rincian3->bulan_id == $Opd1->bulan_id)
                                         @if ($Rincian3->id_kelompok == '3')
