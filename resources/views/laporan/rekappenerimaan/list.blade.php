@@ -142,13 +142,12 @@ $( '#single-select-field' ).select2( {
     });
     $('body').on('click', '.caribaru', function (e) {
         e.preventDefault();
-        var cari_id_opd = $("#cari_id_opd").val();
         var cari_bulan = $("#cari_bulan").val();
         var tampil = '1';
         $.ajax({
             url: "{{ route('laporan.rekappenerimaan.index') }}" +'/' + tampil +'/tampil',
             type: "GET",
-            data: 'cari_bulan=' + cari_bulan + '&cari_id_opd=' + cari_id_opd,
+            data: 'cari_bulan=' + cari_bulan,
             success: function (data) {
                 $('.tampilbku').html(data);//menampilkan data ke dalam modal
 
@@ -161,7 +160,6 @@ $( '#single-select-field' ).select2( {
 
     });
     $('body').on('click', '.resetbaru', function () {
-        $("#cari_id_opd").val('').trigger('change');
         $("#cari_bulan").val('year').trigger('change');
         var tampilawal = '0';
         $.ajax({
