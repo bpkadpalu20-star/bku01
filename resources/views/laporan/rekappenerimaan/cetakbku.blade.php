@@ -56,7 +56,7 @@
 <div id="print">
 <div class="row" >
     <div class="col-lg-2" style="left: 50px">
-   <img src='{{ URL::asset('assets/images/logo palu.png')}}' style="left: 50px" height="100" width="100">
+   <img src='{{ URL::asset('assets/images/logopalu.png')}}' style="left: 50px" height="100" width="100">
 </div> <!-- end card -->
    <div class="col-lg-8" style="text-align: center">
    <h2>PEMERINTAH KOTA PALU</h2><h2>BUKU KAS TAHUN ANGGARAN 2025</h2>
