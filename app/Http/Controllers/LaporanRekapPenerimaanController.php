@@ -203,7 +203,7 @@ class LaporanRekapPenerimaanController extends Controller implements HasMiddlewa
             $BKUJenis = BKUJenis::all();
 
         // $Opd = Opd::all();
-        $Opd = Opd::where('Opd.aktif_penerimaan','Y')
+        $Opd = Opd::where('opd.aktif_penerimaan','Y')
         ->get();
         $BulanPenerimaan = BulanPenerimaan::join('opd', 'opd.id', '=' ,'bulanpenerimaan.id_opd')
         ->where('bulanpenerimaan.bulan','like', "%".$request->cari_bulan."%")
@@ -287,7 +287,7 @@ class LaporanRekapPenerimaanController extends Controller implements HasMiddlewa
             $BKUJenis = BKUJenis::all();
 
         // $Opd = Opd::all();
-        $Opd = Opd::where('Opd.aktif_penerimaan','Y')
+        $Opd = Opd::where('opd.aktif_penerimaan','Y')
         ->get();
         $BulanPenerimaan = BulanPenerimaan::join('opd', 'opd.id', '=' ,'bulanpenerimaan.id_opd')
         ->where('bulanpenerimaan.bulan','like', "%".$request->cari_bulan."%")
