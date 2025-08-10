@@ -39,7 +39,7 @@ tr:hover {
 <div id="content" class="tampilan">
     <div class="row">
         <div class="col">
-            {{-- <img src='{{ url('assets/images/logopalu.png') }}' style="left: 50px" height="100" width="100"> --}}
+         <img src="{{ URL::asset('assets/images/brand-logos/desktop-logo1.png')}}" alt="logo" class="desktop-logo">
         <img src='{{ public_path('images/logopalu.png')}}' style="left: 50px" height="100" width="100">
         <img src='{{ public_path('../../images/logopalu.png')}}' style="left: 50px" height="100" width="100">
         <img src='{{ URL::asset('images/logopalu.png')}}' style="left: 50px" height="100" width="100">
