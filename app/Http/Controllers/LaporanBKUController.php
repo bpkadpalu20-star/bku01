@@ -352,6 +352,7 @@ class LaporanBKUController extends Controller implements HasMiddleware
                         'countsts' => $countsts,
                         'countsp2d' => $countsp2d,
                         'bulan' => $bulan,
+                        'Bku' => $Bku,
                 ]);
             }
 
