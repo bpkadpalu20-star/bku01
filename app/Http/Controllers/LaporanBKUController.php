@@ -319,7 +319,7 @@ class LaporanBKUController extends Controller implements HasMiddleware
             $Bku = Bku::join('opd', 'opd.id', '=' ,'bku.id_opd')
                     ->join('bank', 'bank.id', '=' ,'bku.id_bank')
                     ->select('bku.*', 'opd.uraian_skpd', 'bank.kode_bank')
-                    ->where('bku.bulan_id','like',"%".$caribulan."%")
+                    ->where('bku.bulan_id','like',"%".$bulan1->id."%")
                     ->where('bku.id_opd','like',"%".$request->cari_id_opd."%")
                     ->where('bku.id_bank','like',"%".$request->cari_id_bank."%")
                     ->where('bku.aktif_bku','like',"%".$request->cari_bku."%")
