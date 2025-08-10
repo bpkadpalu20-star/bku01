@@ -217,16 +217,12 @@
 
     });
     $('body').on('click', '.pdfbaru', function () {
-        var cari_id_opd = $("#cari_id_opd").val();
-        var cari_id_bank = $("#cari_id_bank").val();
         var cari_bulan = $("#cari_bulan").val();
-        var cari_bku = $("#cari_bku").val();
-        var cari_id_dana = $("#cari_id_dana").val();
         var tampil = '1';
         $.ajax({
             url: "{{ route('laporan.rincianbku.index') }}" +'/' + tampil +'/generatePDF',
             type: "GET",
-            data: 'cari_id_opd=' + cari_id_opd + '&cari_id_bank=' + cari_id_bank + '&cari_bulan=' + cari_bulan + '&cari_bku=' + cari_bku + '&cari_id_dana=' + cari_id_dana,
+            data: 'cari_bulan=' + cari_bulan,
             success: function (data) {
              $('.pdfbku').html(data);//menampilkan data ke dalam modal
             }
