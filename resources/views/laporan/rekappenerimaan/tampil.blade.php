@@ -40,8 +40,8 @@ tr:hover {
     <div class="row">
         <div class="col">
             {{-- <img src='{{ url('assets/images/logopalu.png') }}' style="left: 50px" height="100" width="100"> --}}
-        <img src='images/logopalu.png' style="left: 50px" height="100" width="100">
-        <img src='../../images/logopalu.png' style="left: 50px" height="100" width="100">
+        <img src='{{ public_path('images/logopalu.png')}}' style="left: 50px" height="100" width="100">
+        <img src='{{ public_path('../../images/logopalu.png')}}' style="left: 50px" height="100" width="100">
         <img src='{{ URL::asset('images/logopalu.png')}}' style="left: 50px" height="100" width="100">
             <img src="{{ URL::asset('../../images/logopalu.png')}}" style="width: 50px; left: 60px;" alt="" />
         </div>
