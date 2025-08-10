@@ -22,7 +22,6 @@ use App\Models\ObjekPenerimaan;
 use Barryvdh\DomPDF\Facade\Pdf;
 use App\Models\BKUSubrincianobjek;
 use App\Models\KelompokPenerimaan;
-use App\Models\rincianobjekPenerimaan;
 use Yajra\DataTables\Facades\DataTables;
 use App\Http\Controllers\laporan\Controller;
 use Illuminate\Routing\Controllers\Middleware;
@@ -251,7 +250,7 @@ class LaporanRekapPenerimaanController extends Controller implements HasMiddlewa
         'BKUKelompok' => $BKUKelompok,
         'KelompokPenerimaan' => $KelompokPenerimaan,
         'JenisPenerimaan' => $JenisPenerimaan,
-        'RincianObjekPenerimaan' => $ROPenerimaan,
+        'ROPenerimaan' => $ROPenerimaan,
         'BulanPenerimaantotal' => $BulanPenerimaantotal,
         // 'bkudebetDecember' => $bkudebetDecember,
         // 'SaldoRekKoran' => $SaldoRekKoran,
@@ -332,7 +331,7 @@ class LaporanRekapPenerimaanController extends Controller implements HasMiddlewa
         'BKUKelompok' => $BKUKelompok,
         'KelompokPenerimaan' => $KelompokPenerimaan,
         'JenisPenerimaan' => $JenisPenerimaan,
-        'RincianObjekPenerimaan' => $ROPenerimaan,
+        'ROPenerimaan' => $ROPenerimaan,
         'BulanPenerimaantotal' => $BulanPenerimaantotal,
         // 'bkudebetDecember' => $bkudebetDecember,
         // 'SaldoRekKoran' => $SaldoRekKoran,
