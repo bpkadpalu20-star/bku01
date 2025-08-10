@@ -163,7 +163,7 @@ class PaguPenerimanController extends Controller implements HasMiddleware
             'BKUKelompok' => $BKUKelompok,
             'KelompokPenerimaan' => $KelompokPenerimaan,
             'JenisPenerimaan' => $JenisPenerimaan,
-            'RincianObjekPenerimaan' => $ROPenerimaan,
+            'ROPenerimaan' => $ROPenerimaan,
             'BulanPenerimaantotal' => $BulanPenerimaantotal,
             'Kelompoktotal1' => $Kelompoktotal1,
             'Kelompoktotal2' => $Kelompoktotal2,
