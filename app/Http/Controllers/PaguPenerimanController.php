@@ -25,7 +25,7 @@ use App\Models\BKUSubrincianobjek;
 use App\Models\KelompokPenerimaan;
 use Illuminate\Support\Facades\DB;
 use App\Http\Controllers\Controller;
-use App\Models\RincianObjekPenerimaan;
+use App\Models\ROPenerimaan;
 use Yajra\DataTables\Facades\DataTables;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Routing\Controllers\Middleware;
@@ -122,7 +122,7 @@ class PaguPenerimanController extends Controller implements HasMiddleware
             $ObjekPenerimaan = ObjekPenerimaan::join('objek', 'objek.id', '=' ,'objekpenerimaan.kd_objek')
             ->select('objekpenerimaan.*', 'objek.uraian_objek')
             ->get();
-            $RincianObjekPenerimaan = RincianObjekPenerimaan::join('rincian_objek', 'rincian_objek.id', '=' ,'rincianobjekpenerimaan.kd_rincianobjek')
+            $ROPenerimaan = ROPenerimaan::join('rincian_objek', 'rincian_objek.id', '=' ,'rincianobjekpenerimaan.kd_rincianobjek')
             ->select('rincianobjekpenerimaan.*', 'rincian_objek.uraian_rincianobjek')
             ->get();
             $OPDPenerimaan = OPDPenerimaan::join('sub_rincianobjek', 'sub_rincianobjek.id', '=' ,'opdpenerimaan.kd_subrincianobjek')
@@ -163,7 +163,7 @@ class PaguPenerimanController extends Controller implements HasMiddleware
             'BKUKelompok' => $BKUKelompok,
             'KelompokPenerimaan' => $KelompokPenerimaan,
             'JenisPenerimaan' => $JenisPenerimaan,
-            'RincianObjekPenerimaan' => $RincianObjekPenerimaan,
+            'RincianObjekPenerimaan' => $ROPenerimaan,
             'BulanPenerimaantotal' => $BulanPenerimaantotal,
             'Kelompoktotal1' => $Kelompoktotal1,
             'Kelompoktotal2' => $Kelompoktotal2,
@@ -277,9 +277,9 @@ class PaguPenerimanController extends Controller implements HasMiddleware
             $OPDPenerimaan->nilai_paguopd = $nilai_pagu;
             $OPDPenerimaan->save();
 
-            $RincianObjekPenerimaan = RincianObjekPenerimaan::findOrFail($idrop);
-            $RincianObjekPenerimaan->nilai_pagurincian = $TambahRincianObjekPenerimaan;
-            $RincianObjekPenerimaan->save();
+            $ROPenerimaan = ROPenerimaan::findOrFail($idrop);
+            $ROPenerimaan->nilai_pagurincian = $TambahRincianObjekPenerimaan;
+            $ROPenerimaan->save();
 
             $ObjekPenerimaan = ObjekPenerimaan::findOrFail($idop);
             $ObjekPenerimaan->nilai_paguobjek = $TambahObjekPenerimaan;

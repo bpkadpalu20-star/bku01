@@ -25,7 +25,7 @@ use App\Models\BKUSubrincianobjek;
 use App\Models\KelompokPenerimaan;
 use Illuminate\Support\Facades\DB;
 use App\Http\Controllers\Controller;
-use App\Models\RincianObjekPenerimaan;
+use App\Models\ROPenerimaan;
 use Illuminate\Support\Facades\Response;
 use Yajra\DataTables\Facades\DataTables;
 use Illuminate\Support\Facades\Validator;
@@ -229,14 +229,14 @@ class BkuPenerimaanController extends Controller implements HasMiddleware
                             $cekObjekPenerimaan = ObjekPenerimaan::where(['id' => $idop,])->first();
                             $idBKUObjek = BKUObjek::where(['id' => $request->create_Objek,])->first();
 
-                            $RincianObjekPenerimaan = RincianObjekPenerimaan::select('rincianobjekpenerimaan.nilai_realisasirincian')
+                            $ROPenerimaan = ROPenerimaan::select('rincianobjekpenerimaan.nilai_realisasirincian')
                             ->where('rincianobjekpenerimaan.bulan','like', "%".$request->create_bulan."%")
                             ->where(['rincianobjekpenerimaan.id' => $idrop,])
                             ->get();
-                            $sumrekaprincian = $RincianObjekPenerimaan->sum('nilai_realisasirincian');
+                            $sumrekaprincian = $ROPenerimaan->sum('nilai_realisasirincian');
                             $nilai_realisasirincian = str_replace('.','',$request->create_nilai_sts);
                             $nilaipagurincian = $nilai_realisasirincian + $sumrekaprincian;
-                            $cekRincianObjekPenerimaan = RincianObjekPenerimaan::where(['id' => $idrop,])->first();
+                            $cekRincianObjekPenerimaan = ROPenerimaan::where(['id' => $idrop,])->first();
                             $idBKURincianobjek = BKURincianobjek::where(['id' => $request->create_rincianObjek,])->first();
 
                             $HasilopdPenerimaan = OPDPenerimaan::select('opdpenerimaan.nilai_realisasiopd')
@@ -292,34 +292,34 @@ class BkuPenerimaanController extends Controller implements HasMiddleware
 
                             }
                             if (!$cekRincianObjekPenerimaan) {
-                                $RincianObjekPenerimaan = new RincianObjekPenerimaan;
-                                $RincianObjekPenerimaan->id = $idrop;
-                                $RincianObjekPenerimaan->id_op = $idop;
-                                $RincianObjekPenerimaan->id_opd = $request->create_id_opd;
-                                $RincianObjekPenerimaan->id_akun = $request->create_akun;
-                                $RincianObjekPenerimaan->id_kelompok = $request->create_kelompok;
-                                $RincianObjekPenerimaan->kd_jenis = $request->create_jenis;
-                                $RincianObjekPenerimaan->kd_objek = $request->create_Objek;
-                                $RincianObjekPenerimaan->kd_rincianobjek = $request->create_rincianObjek;
-                                $RincianObjekPenerimaan->kode_rincianobjek = $idBKURincianobjek->kode_rincianobjek;
-                                $RincianObjekPenerimaan->nilai_realisasirincian = $nilaipagurincian;
-                                $RincianObjekPenerimaan->bulan_id = $create_tanggal_bku3angka;
-                                $RincianObjekPenerimaan->bulan = $create_tanggal_bku3;
-                                $RincianObjekPenerimaan->save();
+                                $ROPenerimaan = new ROPenerimaan;
+                                $ROPenerimaan->id = $idrop;
+                                $ROPenerimaan->id_op = $idop;
+                                $ROPenerimaan->id_opd = $request->create_id_opd;
+                                $ROPenerimaan->id_akun = $request->create_akun;
+                                $ROPenerimaan->id_kelompok = $request->create_kelompok;
+                                $ROPenerimaan->kd_jenis = $request->create_jenis;
+                                $ROPenerimaan->kd_objek = $request->create_Objek;
+                                $ROPenerimaan->kd_rincianobjek = $request->create_rincianObjek;
+                                $ROPenerimaan->kode_rincianobjek = $idBKURincianobjek->kode_rincianobjek;
+                                $ROPenerimaan->nilai_realisasirincian = $nilaipagurincian;
+                                $ROPenerimaan->bulan_id = $create_tanggal_bku3angka;
+                                $ROPenerimaan->bulan = $create_tanggal_bku3;
+                                $ROPenerimaan->save();
                             } else {
-                                $RincianObjekPenerimaan = RincianObjekPenerimaan::findOrFail($idrop);
-                                $RincianObjekPenerimaan->id_op = $idop;
-                                $RincianObjekPenerimaan->id_opd = $request->create_id_opd;
-                                $RincianObjekPenerimaan->id_akun = $request->create_akun;
-                                $RincianObjekPenerimaan->id_kelompok = $request->create_kelompok;
-                                $RincianObjekPenerimaan->kd_jenis = $request->create_jenis;
-                                $RincianObjekPenerimaan->kd_objek = $request->create_Objek;
-                                $RincianObjekPenerimaan->kd_rincianobjek = $request->create_rincianObjek;
-                                $RincianObjekPenerimaan->kode_rincianobjek = $idBKURincianobjek->kode_rincianobjek;
-                                $RincianObjekPenerimaan->nilai_realisasirincian = $nilaipagurincian;
-                                $RincianObjekPenerimaan->bulan_id = $create_tanggal_bku3angka;
-                                $RincianObjekPenerimaan->bulan = $create_tanggal_bku3;
-                                $RincianObjekPenerimaan->save();
+                                $ROPenerimaan = ROPenerimaan::findOrFail($idrop);
+                                $ROPenerimaan->id_op = $idop;
+                                $ROPenerimaan->id_opd = $request->create_id_opd;
+                                $ROPenerimaan->id_akun = $request->create_akun;
+                                $ROPenerimaan->id_kelompok = $request->create_kelompok;
+                                $ROPenerimaan->kd_jenis = $request->create_jenis;
+                                $ROPenerimaan->kd_objek = $request->create_Objek;
+                                $ROPenerimaan->kd_rincianobjek = $request->create_rincianObjek;
+                                $ROPenerimaan->kode_rincianobjek = $idBKURincianobjek->kode_rincianobjek;
+                                $ROPenerimaan->nilai_realisasirincian = $nilaipagurincian;
+                                $ROPenerimaan->bulan_id = $create_tanggal_bku3angka;
+                                $ROPenerimaan->bulan = $create_tanggal_bku3;
+                                $ROPenerimaan->save();
                             }
                             if (!$cekObjekPenerimaan) {
                                 $ObjekPenerimaan = new ObjekPenerimaan;
@@ -522,14 +522,14 @@ class BkuPenerimaanController extends Controller implements HasMiddleware
                             $cekObjekPenerimaan = ObjekPenerimaan::where(['id' => $idop,])->first();
                             $idBKUObjek = BKUObjek::where(['id' => $request->create_Objek,])->first();
 
-                            $RincianObjekPenerimaan = RincianObjekPenerimaan::select('rincianobjekpenerimaan.nilai_realisasirincian')
+                            $ROPenerimaan = ROPenerimaan::select('rincianobjekpenerimaan.nilai_realisasirincian')
                             ->where('rincianobjekpenerimaan.bulan','like', "%".$request->create_bulan."%")
                             ->where(['rincianobjekpenerimaan.id' => $idrop,])
                             ->get();
-                            $sumrekaprincian = $RincianObjekPenerimaan->sum('nilai_realisasirincian');
+                            $sumrekaprincian = $ROPenerimaan->sum('nilai_realisasirincian');
                             $nilai_realisasirincian = str_replace('.','',$request->create_nilai_sts);
                             $nilaipagurincian = $nilai_realisasirincian + $sumrekaprincian;
-                            $cekRincianObjekPenerimaan = RincianObjekPenerimaan::where(['id' => $idrop,])->first();
+                            $cekRincianObjekPenerimaan = ROPenerimaan::where(['id' => $idrop,])->first();
                             $idBKURincianobjek = BKURincianobjek::where(['id' => $request->create_rincianObjek,])->first();
 
                             $HasilopdPenerimaan = OPDPenerimaan::select('opdpenerimaan.nilai_realisasiopd')
@@ -584,34 +584,34 @@ class BkuPenerimaanController extends Controller implements HasMiddleware
                             }
 
                             if (!$cekRincianObjekPenerimaan) {
-                                $RincianObjekPenerimaan = new RincianObjekPenerimaan;
-                                $RincianObjekPenerimaan->id = $idrop;
-                                $RincianObjekPenerimaan->id_op = $idop;
-                                $RincianObjekPenerimaan->id_opd = $request->create_id_opd;
-                                $RincianObjekPenerimaan->id_akun = $request->create_akun;
-                                $RincianObjekPenerimaan->id_kelompok = $request->create_kelompok;
-                                $RincianObjekPenerimaan->kd_jenis = $request->create_jenis;
-                                $RincianObjekPenerimaan->kd_objek = $request->create_Objek;
-                                $RincianObjekPenerimaan->kd_rincianobjek = $request->create_rincianObjek;
-                                $RincianObjekPenerimaan->kode_rincianobjek = $idBKURincianobjek->kode_rincianobjek;
-                                $RincianObjekPenerimaan->nilai_realisasirincian = $nilaipagurincian;
-                                $RincianObjekPenerimaan->bulan_id = $create_tanggal_bku3angka;
-                                $RincianObjekPenerimaan->bulan = $create_tanggal_bku3;
-                                $RincianObjekPenerimaan->save();
+                                $ROPenerimaan = new ROPenerimaan;
+                                $ROPenerimaan->id = $idrop;
+                                $ROPenerimaan->id_op = $idop;
+                                $ROPenerimaan->id_opd = $request->create_id_opd;
+                                $ROPenerimaan->id_akun = $request->create_akun;
+                                $ROPenerimaan->id_kelompok = $request->create_kelompok;
+                                $ROPenerimaan->kd_jenis = $request->create_jenis;
+                                $ROPenerimaan->kd_objek = $request->create_Objek;
+                                $ROPenerimaan->kd_rincianobjek = $request->create_rincianObjek;
+                                $ROPenerimaan->kode_rincianobjek = $idBKURincianobjek->kode_rincianobjek;
+                                $ROPenerimaan->nilai_realisasirincian = $nilaipagurincian;
+                                $ROPenerimaan->bulan_id = $create_tanggal_bku3angka;
+                                $ROPenerimaan->bulan = $create_tanggal_bku3;
+                                $ROPenerimaan->save();
                             } else {
-                                $RincianObjekPenerimaan = RincianObjekPenerimaan::findOrFail($idrop);
-                                $RincianObjekPenerimaan->id_op = $idop;
-                                $RincianObjekPenerimaan->id_opd = $request->create_id_opd;
-                                $RincianObjekPenerimaan->id_akun = $request->create_akun;
-                                $RincianObjekPenerimaan->id_kelompok = $request->create_kelompok;
-                                $RincianObjekPenerimaan->kd_jenis = $request->create_jenis;
-                                $RincianObjekPenerimaan->kd_objek = $request->create_Objek;
-                                $RincianObjekPenerimaan->kd_rincianobjek = $request->create_rincianObjek;
-                                $RincianObjekPenerimaan->kode_rincianobjek = $idBKURincianobjek->kode_rincianobjek;
-                                $RincianObjekPenerimaan->nilai_realisasirincian = $nilaipagurincian;
-                                $RincianObjekPenerimaan->bulan_id = $create_tanggal_bku3angka;
-                                $RincianObjekPenerimaan->bulan = $create_tanggal_bku3;
-                                $RincianObjekPenerimaan->save();
+                                $ROPenerimaan = ROPenerimaan::findOrFail($idrop);
+                                $ROPenerimaan->id_op = $idop;
+                                $ROPenerimaan->id_opd = $request->create_id_opd;
+                                $ROPenerimaan->id_akun = $request->create_akun;
+                                $ROPenerimaan->id_kelompok = $request->create_kelompok;
+                                $ROPenerimaan->kd_jenis = $request->create_jenis;
+                                $ROPenerimaan->kd_objek = $request->create_Objek;
+                                $ROPenerimaan->kd_rincianobjek = $request->create_rincianObjek;
+                                $ROPenerimaan->kode_rincianobjek = $idBKURincianobjek->kode_rincianobjek;
+                                $ROPenerimaan->nilai_realisasirincian = $nilaipagurincian;
+                                $ROPenerimaan->bulan_id = $create_tanggal_bku3angka;
+                                $ROPenerimaan->bulan = $create_tanggal_bku3;
+                                $ROPenerimaan->save();
                             }
                             if (!$cekObjekPenerimaan) {
                                 $ObjekPenerimaan = new ObjekPenerimaan;
@@ -1108,7 +1108,7 @@ class BkuPenerimaanController extends Controller implements HasMiddleware
                         $ObjekPenerimaan->save();
                     }
 
-                    $NilaiBKURinObjek = RincianObjekPenerimaan::select('rincianobjekpenerimaan.nilai_realisasirincian')
+                    $NilaiBKURinObjek = ROPenerimaan::select('rincianobjekpenerimaan.nilai_realisasirincian')
                                         ->where('rincianobjekpenerimaan.bulan','like', "%".$request->edit_bulan1."%")
                                         ->where(column: ['rincianobjekpenerimaan.id_opd' => $request->edit_id_opd1,])
                                         ->where(column: ['rincianobjekpenerimaan.id_akun' => $request->edit_BKUAkun1,])
@@ -1118,7 +1118,7 @@ class BkuPenerimaanController extends Controller implements HasMiddleware
                                         ->where(column: ['rincianobjekpenerimaan.kd_rincianobjek' => $request->edit_BKURincianobjek1,])
                                         ->get();
                     $NilaiBKURinObjeksum = $NilaiBKURinObjek->sum('nilai_realisasirincian');
-                    $NilaiBKURinObjek1 = RincianObjekPenerimaan::select('rincianobjekpenerimaan.nilai_realisasirincian')
+                    $NilaiBKURinObjek1 = ROPenerimaan::select('rincianobjekpenerimaan.nilai_realisasirincian')
                                         ->where('rincianobjekpenerimaan.bulan','like', "%".$request->edit_bulan1."%")
                                         ->where(['rincianobjekpenerimaan.id_opd' => $request->edit_id_opd,])
                                         ->where(column: ['rincianobjekpenerimaan.id_akun' => $request->edit_akun,])
@@ -1133,9 +1133,9 @@ class BkuPenerimaanController extends Controller implements HasMiddleware
                     $rinobjekkurang = $NilaiBKURinObjeksum - $BkuPenerimaan22->nilai_sts;
                     $rinobjektambah1 = $NilaiBKURinObjeksum1 + $nilai_realisasibulan;
                     $rinobjektambah = $nilai_realisasibulan + $rinobjekkurang;
-                    $cekidrop = RincianObjekPenerimaan::where(['id' => $idrop1,])->first();
+                    $cekidrop = ROPenerimaan::where(['id' => $idrop1,])->first();
                     if (!$cekidrop) {
-                        $RinObjekPenerimaanBaru = new RincianObjekPenerimaan;
+                        $RinObjekPenerimaanBaru = new ROPenerimaan;
                         $RinObjekPenerimaanBaru->id = $idrop1;
                         $RinObjekPenerimaanBaru->id_op = $idop1;
                         $RinObjekPenerimaanBaru->id_opd = $request->edit_id_opd;
@@ -1150,19 +1150,19 @@ class BkuPenerimaanController extends Controller implements HasMiddleware
                         $RinObjekPenerimaanBaru->bulan = $edit_tanggal_bku3;
                         $RinObjekPenerimaanBaru->save();
 
-                        $RinObjekPenerimaan = RincianObjekPenerimaan::findOrFail($idrop);
+                        $RinObjekPenerimaan = ROPenerimaan::findOrFail($idrop);
                         $RinObjekPenerimaan->nilai_realisasirincian = $rinobjekkurang;
                         $RinObjekPenerimaan->save();
                     } elseif ($idrop == $idrop1) {
-                        $RinObjekPenerimaan = RincianObjekPenerimaan::findOrFail($idrop);
+                        $RinObjekPenerimaan = ROPenerimaan::findOrFail($idrop);
                         $RinObjekPenerimaan->nilai_realisasirincian = $rinobjektambah;
                         $RinObjekPenerimaan->save();
                     } else {
-                        $RinObjekPenerimaan1 = RincianObjekPenerimaan::findOrFail($idrop);
+                        $RinObjekPenerimaan1 = ROPenerimaan::findOrFail($idrop);
                         $RinObjekPenerimaan1->nilai_realisasirincian = $rinobjekkurang;
                         $RinObjekPenerimaan1->save();
 
-                        $RinObjekPenerimaan = RincianObjekPenerimaan::findOrFail($idrop1);
+                        $RinObjekPenerimaan = ROPenerimaan::findOrFail($idrop1);
                         $RinObjekPenerimaan->nilai_realisasirincian = $rinobjektambah1;
                         $RinObjekPenerimaan->save();
                     }

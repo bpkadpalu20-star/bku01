@@ -220,7 +220,7 @@ class LaporanRekapPenerimaanController extends Controller implements HasMiddlewa
         $ObjekPenerimaan = ObjekPenerimaan::join('objek', 'objek.id', '=' ,'objekpenerimaan.kd_objek')
         ->select('objekpenerimaan.*', 'objek.uraian_objek')
         ->get();
-        $RincianObjekPenerimaan = RincianObjekPenerimaan::join('rincian_objek', 'rincian_objek.id', '=' ,'rincianobjekpenerimaan.kd_rincianobjek')
+        $ROPenerimaan = ROPenerimaan::join('rincian_objek', 'rincian_objek.id', '=' ,'rincianobjekpenerimaan.kd_rincianobjek')
         ->select('rincianobjekpenerimaan.*', 'rincian_objek.uraian_rincianobjek')
         ->get();
         $OPDPenerimaan = OPDPenerimaan::join('sub_rincianobjek', 'sub_rincianobjek.id', '=' ,'opdpenerimaan.kd_subrincianobjek')
@@ -251,7 +251,7 @@ class LaporanRekapPenerimaanController extends Controller implements HasMiddlewa
         'BKUKelompok' => $BKUKelompok,
         'KelompokPenerimaan' => $KelompokPenerimaan,
         'JenisPenerimaan' => $JenisPenerimaan,
-        'RincianObjekPenerimaan' => $RincianObjekPenerimaan,
+        'RincianObjekPenerimaan' => $ROPenerimaan,
         'BulanPenerimaantotal' => $BulanPenerimaantotal,
         // 'bkudebetDecember' => $bkudebetDecember,
         // 'SaldoRekKoran' => $SaldoRekKoran,
@@ -304,7 +304,7 @@ class LaporanRekapPenerimaanController extends Controller implements HasMiddlewa
         $ObjekPenerimaan = ObjekPenerimaan::join('objek', 'objek.id', '=' ,'objekpenerimaan.kd_objek')
         ->select('objekpenerimaan.*', 'objek.uraian_objek')
         ->get();
-        $RincianObjekPenerimaan = RincianObjekPenerimaan::join('rincian_objek', 'rincian_objek.id', '=' ,'rincianobjekpenerimaan.kd_rincianobjek')
+        $ROPenerimaan = ROPenerimaan::join('rincian_objek', 'rincian_objek.id', '=' ,'rincianobjekpenerimaan.kd_rincianobjek')
         ->select('rincianobjekpenerimaan.*', 'rincian_objek.uraian_rincianobjek')
         ->get();
         $OPDPenerimaan = OPDPenerimaan::join('sub_rincianobjek', 'sub_rincianobjek.id', '=' ,'opdpenerimaan.kd_subrincianobjek')
@@ -332,7 +332,7 @@ class LaporanRekapPenerimaanController extends Controller implements HasMiddlewa
         'BKUKelompok' => $BKUKelompok,
         'KelompokPenerimaan' => $KelompokPenerimaan,
         'JenisPenerimaan' => $JenisPenerimaan,
-        'RincianObjekPenerimaan' => $RincianObjekPenerimaan,
+        'RincianObjekPenerimaan' => $ROPenerimaan,
         'BulanPenerimaantotal' => $BulanPenerimaantotal,
         // 'bkudebetDecember' => $bkudebetDecember,
         // 'SaldoRekKoran' => $SaldoRekKoran,
