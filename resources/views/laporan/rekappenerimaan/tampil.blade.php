@@ -41,7 +41,7 @@ tr:hover {
         <div class="col">
             <img src='{{ url('assets/images/logopalu.png') }}' style="left: 50px" height="100" width="100">
         <img src='repositories/bku01/resources/images/logopalu.png' style="left: 50px" height="100" width="100">
-        <img src=../images/logopalu.png' style="left: 50px" height="100" width="100">
+        <img src='../images/logopalu.png' style="left: 50px" height="100" width="100">
         <img src='{{ URL::asset('../assets/images/logopalu.png')}}' style="left: 50px" height="100" width="100">
             <img src="{{ URL::asset('assets/images/logo palu.png')}}" style="width: 50px; left: 60px;" alt="" />
         </div>
