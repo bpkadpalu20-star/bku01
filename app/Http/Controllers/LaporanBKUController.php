@@ -41,9 +41,7 @@ class LaporanBKUController extends Controller implements HasMiddleware
         $opd = Opd::all();
         $bank = Bank::all();
         $dana = Dana::all();
-        $caribulan = Carbon::make($request->cari_bulan)->format("m");
 
-                $bulan1 = TextBulan1::findOrFail($caribulan);
         if ($request->cari_bulan == 'year') {
             $cari_bulan = '';
             // $cari_id_dana = '';
@@ -65,7 +63,9 @@ class LaporanBKUController extends Controller implements HasMiddleware
             }
         } else {
             if ($request->ajax()) {
+$caribulan = Carbon::make($request->cari_bulan)->format("m");
 
+                $bulan1 = TextBulan1::findOrFail($caribulan);
                 $data = Bku::join('opd', 'opd.id', '=' ,'bku.id_opd')
                     ->join('bank', 'bank.id', '=' ,'bku.id_bank')
                     // ->join('dana', 'dana.id', '=' ,'bku.id_dana')
