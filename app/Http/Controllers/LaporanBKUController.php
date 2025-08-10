@@ -327,19 +327,14 @@ class LaporanBKUController extends Controller implements HasMiddleware
                     ->where('bku.id_dana','like',"%".$request->cari_id_dana."%")
                     ->get();
 
-                $countsts = Bku::join('opd', 'opd.id', '=' ,'bku.id_opd')
-                    ->join('bank', 'bank.id', '=' ,'bku.id_bank')
-                    ->select('bku.nilai_sts')
+                $countsts = Bku::select('bku.nilai_sts')
                     ->where('bku.bulan_id','like', "%".$bulan1->id."%")
                     ->where('bku.id_opd','like',"%".$request->cari_id_opd."%")
                     ->where('bku.id_bank','like',"%".$request->cari_id_bank."%")
                     ->where('bku.aktif_bku','like',"%".$request->cari_bku."%")
                     ->where('bku.id_dana','like',"%".$request->cari_id_dana."%")
                     ->get();
-                $countsp2d = Bku::join('dana', 'dana.id', '=' ,'bku.id_dana')
-                    ->join('opd', 'opd.id', '=' ,'bku.id_opd')
-                    ->join('bank', 'bank.id', '=' ,'bku.id_bank')
-                    ->select('bku.nilai_sp2d')
+                $countsp2d = Bku::select('bku.nilai_sp2d')
                     ->where('bku.bulan_id','like', "%".$bulan1->id."%")
                     ->where('bku.id_opd','like',"%".$request->cari_id_opd."%")
                     ->where('bku.id_bank','like',"%".$request->cari_id_bank."%")
