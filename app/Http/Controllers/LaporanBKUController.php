@@ -288,7 +288,8 @@ $caribulan = Carbon::make($request->cari_bulan)->format("m");
                 $bulan1 = TextBulan1::findOrFail($caribulan);
                 $bulan = 'Satu'. ' '. $bulan1->nama_bulan;
                 $cari_bulan = '';
-                $Bku = Bku::join('opd', 'opd.id', '=' ,'bku.id_opd')
+                if ($request->ajax()) {
+                $data = Bku::join('opd', 'opd.id', '=' ,'bku.id_opd')
                     ->join('bank', 'bank.id', '=' ,'bku.id_bank')
                     ->select('bku.*', 'opd.uraian_skpd', 'bank.kode_bank')
                     ->where('bku.bulan','like',"%".$cari_bulan."%")
@@ -296,7 +297,7 @@ $caribulan = Carbon::make($request->cari_bulan)->format("m");
                     ->where('bku.id_bank','like',"%".$request->cari_id_bank."%")
                     ->where('bku.aktif_bku','like',"%".$request->cari_bku."%")
                     ->get();
-
+                }
                 $countsts = Bku::join('opd', 'opd.id', '=' ,'bku.id_opd')
                     ->join('bank', 'bank.id', '=' ,'bku.id_bank')
                     ->select('bku.nilai_sts')
@@ -315,37 +316,23 @@ $caribulan = Carbon::make($request->cari_bulan)->format("m");
                     ->where('bku.aktif_bku','like',"%".$request->cari_bku."%")
                     ->get();
             } else {
-                if ($request->ajax()) {
-$caribulan = Carbon::make($request->cari_bulan)->format("m");
-
-                $bulan1 = TextBulan1::findOrFail($caribulan);
-                $data = Bku::join('opd', 'opd.id', '=' ,'bku.id_opd')
-                    ->join('bank', 'bank.id', '=' ,'bku.id_bank')
-                    // ->join('dana', 'dana.id', '=' ,'bku.id_dana')
-                    ->select('bku.*', 'opd.uraian_skpd', 'bank.kode_bank')
-                    ->where('bku.bulan_id','like', "%".$bulan1->id."%")
-                    ->where('bku.id_dana','like',"%".$request->cari_id_dana."%")
-                    ->where('bku.id_opd','like',"%".$request->cari_id_opd."%")
-                    ->where('bku.id_bank','like',"%".$request->cari_id_bank."%")
-                    ->where('bku.aktif_bku','like',"%".$request->cari_bku."%")
-                    ->get();
-                    return DataTables::of($data)->make(true);
-            }
                 $caribulan = Carbon::make($request->cari_bulan)->format("m");
 
                 $bulan1 = TextBulan1::findOrFail($caribulan);
                 $bulan = 'Bulan'. ' '. $bulan1->nama_bulan;
-
-                // $Bku = Bku::join('dana', 'dana.id', '=' ,'bku.id_dana')
-                //     ->join('opd', 'opd.id', '=' ,'bku.id_opd')
-                //     ->join('bank', 'bank.id', '=' ,'bku.id_bank')
-                //     ->select('bku.*', 'dana.kode_dana', 'opd.uraian_skpd', 'bank.kode_bank')
-                //     ->where('bku.bulan_id','like', "%".$bulan1->id."%")
-                //     ->where('bku.id_opd','like',"%".$request->cari_id_opd."%")
-                //     ->where('bku.id_bank','like',"%".$request->cari_id_bank."%")
-                //     ->where('bku.aktif_bku','like',"%".$request->cari_bku."%")
-                //     ->where('bku.id_dana','like',"%".$request->cari_id_dana."%")
-                //     ->get();
+                if ($request->ajax()) {
+                $data = Bku::join('dana', 'dana.id', '=' ,'bku.id_dana')
+                    ->join('opd', 'opd.id', '=' ,'bku.id_opd')
+                    ->join('bank', 'bank.id', '=' ,'bku.id_bank')
+                    ->select('bku.*', 'dana.kode_dana', 'opd.uraian_skpd', 'bank.kode_bank')
+                    ->where('bku.bulan_id','like', "%".$bulan1->id."%")
+                    ->where('bku.id_opd','like',"%".$request->cari_id_opd."%")
+                    ->where('bku.id_bank','like',"%".$request->cari_id_bank."%")
+                    ->where('bku.aktif_bku','like',"%".$request->cari_bku."%")
+                    ->where('bku.id_dana','like',"%".$request->cari_id_dana."%")
+                    ->get();
+                     return DataTables::of($data)->make(true);
+                     }
 
                 $countsts = Bku::select('bku.nilai_sts')
                     ->where('bku.bulan_id','like', "%".$bulan1->id."%")
