@@ -56,7 +56,7 @@
 <div id="print">
 <div class="row" >
     <div class="col-lg-2" style="left: 50px">
-        <img src='{{ asset('/assets/images/logopalu.png') }}' style="left: 50px" height="100" width="100">
+        <img src='{{ asset('assets/images/logopalu.png') }}' style="left: 50px" height="100" width="100">
         <img src='repositories/bku01/assets/images/logopalu.png' style="left: 50px" height="100" width="100">
         <img src='{{ URL::asset('repositories/bku01/assets/images/logopalu.png')}}' style="left: 50px" height="100" width="100">
 </div> <!-- end card -->
