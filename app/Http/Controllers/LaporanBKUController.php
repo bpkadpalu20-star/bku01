@@ -194,13 +194,15 @@ class LaporanBKUController extends Controller implements HasMiddleware
                 $bulan1 = TextBulan1::findOrFail($caribulan);
                 $bulan = 'Satu'. ' '. $bulan1->nama_bulan;
                 $cari_bulan = '';
-                $Bku = Bku::join('opd', 'opd.id', '=' ,'bku.id_opd')
+                $Bku = Bku::join('dana', 'dana.id', '=' ,'bku.id_dana')
+                    ->join('opd', 'opd.id', '=' ,'bku.id_opd')
                     ->join('bank', 'bank.id', '=' ,'bku.id_bank')
-                    ->select('bku.*', 'opd.uraian_skpd', 'bank.kode_bank')
-                    ->where('bku.bulan','like',"%".$cari_bulan."%")
+                    ->select('bku.*', 'dana.kode_dana', 'opd.uraian_skpd', 'bank.kode_bank')
+                    ->where('bku.bulan_id','like', "%".$bulan1->id."%")
                     ->where('bku.id_opd','like',"%".$request->cari_id_opd."%")
                     ->where('bku.id_bank','like',"%".$request->cari_id_bank."%")
                     ->where('bku.aktif_bku','like',"%".$request->cari_bku."%")
+                    ->where('bku.id_dana','like',"%".$request->cari_id_dana."%")
                     ->get();
 
                 $countsts = Bku::join('opd', 'opd.id', '=' ,'bku.id_opd')
@@ -230,10 +232,11 @@ class LaporanBKUController extends Controller implements HasMiddleware
                     ->join('opd', 'opd.id', '=' ,'bku.id_opd')
                     ->join('bank', 'bank.id', '=' ,'bku.id_bank')
                     ->select('bku.*', 'dana.kode_dana', 'opd.uraian_skpd', 'bank.kode_bank')
-                    ->where('bku.bulan','like', "%".$request->cari_bulan."%")
+                    ->where('bku.bulan_id','like', "%".$bulan1->id."%")
                     ->where('bku.id_opd','like',"%".$request->cari_id_opd."%")
                     ->where('bku.id_bank','like',"%".$request->cari_id_bank."%")
                     ->where('bku.aktif_bku','like',"%".$request->cari_bku."%")
+                    ->where('bku.id_dana','like',"%".$request->cari_id_dana."%")
                     ->get();
 
                 $countsts = Bku::join('opd', 'opd.id', '=' ,'bku.id_opd')
