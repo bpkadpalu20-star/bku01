@@ -125,11 +125,25 @@
             {data: 'tanggal_bku', name: 'tanggal_bku'},
             {data: 'uraian_bku', name: 'uraian_bku'},
             {data: 'uraian_dana', name: 'uraian_dana'},
-            {data: 'singkatan', name: 'singkatan'},
+            {data: 'uraian_skpd', name: 'uraian_skpd'},
             {data: 'nama_rekanan', name: 'nama_rekanan'},
             {data: 'kode_bank', name: 'kode_bank'},
-            {data: 'nilai_sts',  render: $.fn.dataTable.render.number( ',', '.', 0, '' ), className: 'text-right'},
-            {data: 'nilai_sp2d',  render: $.fn.dataTable.render.number( ',', '.', 0, '' ), className: 'text-right'},
+            // {data: 'nilai_sts',  render: $.fn.dataTable.render.number( ',', '.', 0, '' ), className: 'text-right'},
+            // {data: 'nilai_sp2d',  render: $.fn.dataTable.render.number( ',', '.', 0, '' ), className: 'text-right'},
+            {data: "nilai_sts", "width": "20px", "orderable": false, "render": function (data, type, row) {
+                               if (row.aktif == 'Y') //Check column value "Yes"
+                                return  '';
+                               else
+                                   return data === 0 ? 0 : $.fn.dataTable.render.number( '.', ',', 0, '','' ).display( data );
+                           }
+            ,className: 'text-right'},
+            {data: "nilai_sp2d", "width": "20px", "orderable": false, "render": function (data, type, row) {
+                               if (row.aktif == 'Y') //Check column value "Yes"
+                                return  '';
+                               else
+                                   return data === 0 ? 0 : $.fn.dataTable.render.number( '.', ',', 0, '','' ).display( data );
+                           }
+            ,className: 'text-right'},
         ]
     });
 });
