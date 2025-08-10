@@ -63,32 +63,59 @@
    <h2>PEMERINTAH KOTA PALU</h2><h2>BUKU KAS TAHUN ANGGARAN 2025</h2>
 </div> <!-- end card -->
 </div> <!-- end card -->
-<table id="countries" class="table table-bordered align-middle data-table" style="border-collapse: collapse; border-spacing: 0; width: 100%;">
-        <thead>
-            <tr>
-                <th width="60px">No</th>
-                <th width="30px">Nomer SP2D/STS</th>
-                <th width="30px">Tanggal</th>
-                <th width="260px">Uraian</th>
-                <th width="80px">Sumber Dana</th>
-                <th width="80px">OPD</th>
-                <th width="80px">Pihak Ketiga</th>
-                <th width="80px">Bank</th>
-                <th width="80px" style="text-align: right">Nilai Penerimaan</th>
-                <th width="80px" style="text-align: right">Nilai Pengeluaran</th>
-            </tr>
-        </thead>
-        <tbody>
+<table class='table table-bordered dt-responsive nowrap data-table' style="border-collapse: collapse; border-spacing: 0; width: 100%;">
+    <thead>
+        <tr>
+            <th width="60px">No</th>
+            <th width="30px">Nomer SP2D/STS</th>
+            <th width="30px">Tanggal</th>
+            <th width="260px">Uraian</th>
+            <th width="80px">Sumber Dana</th>
+            <th width="80px">OPD</th>
+            <th width="80px">Pihak Ketiga</th>
+            <th width="80px">Bank</th>
+            <th width="80px">Nilai Penerimaan</th>
+            <th width="80px">Nilai Pengeluaran</th>
+        </tr>
+    </thead>
+    <tbody>
+        @php
+        $total = 0;
+        @endphp
+        @if ($Bku->isNotEmpty())
+        @foreach ($Bku as $bkusatu)
+        @php
+        // $total = $total + $Pengeluaran->sum('nilai_sp2d');
+        @endphp
+        <tr>
+            <td width="60px">{{ $bkusatu->id_bku }}</td>
+                <td width="30px">{{ $bkusatu->no_bku }}</td>
+                <td width="30px">{{ $bkusatu->tanggal_bku }}</td>
+                <td width="260px">{{ $bkusatu->uraian_bku }}</td>
+                <td width="60px">{{ $bkusatu->uraian_dana }}</td>
+                <td width="60px">{{ $bkusatu->uraian_skpd }}</td>
+                <td width="60px">{{ $bkusatu->nama_rekanan }}</td>
+                <td width="60px">{{ $bkusatu->kode_bank }}</td>
+                @if ($bkusatu->aktif == "Y")
+                <td width="60px" style="text-align: right"></td>
+                <td width="60px" style="text-align: right"></td>
+                @else
+                <td width="60px" style="text-align: right">{{ number_format($bkusatu->nilai_sts, 0, '.', ',') }}</td>
+                <td width="60px" style="text-align: right">{{ number_format($bkusatu->nilai_sp2d, 0, '.', ',') }}</td>
+                @endif
 
-        </tbody>
-        <tfoot>
-            <tr>
-                <th colspan="8" style="text-align: right">Total</th>
-                <td style="text-align: right"> {{ number_format($total = $countsts->sum('nilai_sts'), 0, ',', '.') }}</td>
-                <td style="text-align: right"> {{ number_format($total = $countsp2d->sum('nilai_sp2d'), 0, ',', '.') }}</td>
-            </tr>
-        </tfoot>
-    </table>
+        </tr>
+        @endforeach
+        @endif
+    </tbody>
+    <tfoot>
+        <tr>
+            <th colspan="8" style="text-align: right">Total</th>
+            <td style="text-align: right"> {{ number_format($total = $countsts->sum('nilai_sts'), 0, '.', ',') }}</td>
+            <td style="text-align: right"> {{ number_format($total = $countsp2d->sum('nilai_sp2d'), 0, '.', ',') }}</td>
+        </tr>
+    </tfoot>
+</table>
 </div> <!-- end card -->
 </body>
 </html>
@@ -125,25 +152,11 @@
             {data: 'tanggal_bku', name: 'tanggal_bku'},
             {data: 'uraian_bku', name: 'uraian_bku'},
             {data: 'uraian_dana', name: 'uraian_dana'},
-            {data: 'uraian_skpd', name: 'uraian_skpd'},
+            {data: 'singkatan', name: 'singkatan'},
             {data: 'nama_rekanan', name: 'nama_rekanan'},
             {data: 'kode_bank', name: 'kode_bank'},
-            // {data: 'nilai_sts',  render: $.fn.dataTable.render.number( ',', '.', 0, '' ), className: 'text-right'},
-            // {data: 'nilai_sp2d',  render: $.fn.dataTable.render.number( ',', '.', 0, '' ), className: 'text-right'},
-            {data: "nilai_sts", "width": "20px", "orderable": false, "render": function (data, type, row) {
-                               if (row.aktif == 'Y') //Check column value "Yes"
-                                return  '';
-                               else
-                                   return data === 0 ? 0 : $.fn.dataTable.render.number( '.', ',', 0, '','' ).display( data );
-                           }
-            ,className: 'text-right'},
-            {data: "nilai_sp2d", "width": "20px", "orderable": false, "render": function (data, type, row) {
-                               if (row.aktif == 'Y') //Check column value "Yes"
-                                return  '';
-                               else
-                                   return data === 0 ? 0 : $.fn.dataTable.render.number( '.', ',', 0, '','' ).display( data );
-                           }
-            ,className: 'text-right'},
+            {data: 'nilai_sts',  render: $.fn.dataTable.render.number( ',', '.', 0, '' ), className: 'text-right'},
+            {data: 'nilai_sp2d',  render: $.fn.dataTable.render.number( ',', '.', 0, '' ), className: 'text-right'},
         ]
     });
 });
