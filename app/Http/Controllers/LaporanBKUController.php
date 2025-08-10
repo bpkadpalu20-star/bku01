@@ -260,7 +260,7 @@ class LaporanBKUController extends Controller implements HasMiddleware
             $image = url('assets/images/logo palu.png');
             $image1 = asset('images/logopalu.png');
             // PDF::setOption(['dpi' => 150, 'defaultFont' => 'sans-serif']);
-        $pdf = PDF::loadview('laporan.bku.pdfbku',[
+        $pdf = PDF::loadview('laporan.bku.tampil',[
             'countsts' => $countsts,
             'countsp2d' => $countsp2d,
             'opd' => $opd,
