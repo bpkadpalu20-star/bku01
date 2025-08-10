@@ -89,7 +89,7 @@ body {
 <body>
     <div class="container">
         <div class="row">
-            <div class="col-lg-2 text"><img src="{{ URL::asset('assets/images/logo palu.png')}}" style="width: 90px; left: 50px;" alt="" /></div>
+            <div class="col-lg-2 text"><img src="{{ URL::asset('assets/images/logo Palu.png')}}" style="width: 50px; left: 60px;" alt="logo" class="desktop-logo"></div>
             <div class="col-lg-9 text textuppercase">
                 <center>
                         <h4>PEMERINTAH KOTA PALU</h4>
