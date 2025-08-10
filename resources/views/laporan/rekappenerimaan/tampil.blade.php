@@ -39,7 +39,7 @@ tr:hover {
 <div id="content" class="tampilan">
     <div class="row">
         <div class="col">
-         <img src="{{ URL::asset('assets/images/logopalu.png')}}" alt="logo" class="desktop-logo">
+         <img src="{{ URL::asset('assets/images/logo Palu.png')}}" alt="logo" class="desktop-logo">
         </div>
         <div class="col align-middle fw-bold text-center text-uppercase" style=" margin-top: 15px; text-align: center; font-size: 13px; font-weight: bold;">
             PEMERINTAH KOTA PALU BUKU KAS PENERIMAAN TAHUN ANGGARAN 2025 {{ old('text',$bulan) }}
