@@ -347,7 +347,7 @@ class LaporanBKUController extends Controller implements HasMiddleware
             return view('laporan.bku.cetakbku',[
                 'countsts' => $countsts,
                 'countsp2d' => $countsp2d,
-                'Bku' => $Bku,
+                // 'Bku' => $Bku,
                 'bulan' => $bulan,
             ]);
     }
