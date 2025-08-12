@@ -16,7 +16,6 @@ use App\Http\Controllers\PermissionController;
 use App\Http\Controllers\BkuPenerimaanController;
 use App\Http\Controllers\PaguPenerimanController;
 use App\Http\Controllers\BkuPengeluaranController;
-use App\Http\Controllers\PrinRincianBKUController;
 use App\Http\Controllers\lapBkuPenerimaanController;
 use App\Http\Controllers\lapBkuPengeluaranController;
 use App\Http\Controllers\LaporanRincianBKUController;
