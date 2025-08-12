@@ -1,6 +1,76 @@
 <script src="{{ URL::asset('assets/csstable/libs/js-xlsx/xlsx.core.min.js')}}"></script>
 <script src="{{ URL::asset('assets/csstable/libs/FileSaver/FileSaver.min.js')}}"></script>
 <script src="{{ URL::asset('assets/csstable/tableExport.js')}}"></script>
+<script src="{{ URL::asset('assets/libs/html2pdf/dist/html2pdf.bundle.min.js')}}"></script>
+  <script>
+    function viewPDF() {
+      // Select the element to convert to PDF
+      const element = document.getElementById('print');
+      // Define PDF formatting options
+      var opt = {
+        margin: 1,
+        filename: 'Rincian-BKU.pdf',
+        image: { type: 'jpeg', quality: 0.98 },
+        html2canvas: { scale: 2 },
+        jsPDF: { unit: 'in', format: 'legal', orientation: 'landscape' }
+      };
+      // Create and open the PDF
+      let worker = html2pdf().set(opt).from(element).toPdf().output('blob')
+        .then((data) => {
+          let fileURL = URL.createObjectURL(data);
+          window.open(fileURL);
+        });
+    }
+  </script>
+  <style type="text/css">
+        table {
+            border-collapse: collapse;
+            page-break-inside:auto
+        }
+        tr    {
+            page-break-inside:avoid;
+            page-break-after:auto
+        }
+        thead {
+            display:table-header-group
+        }
+        th, td {
+            border: black 1px solid;
+            padding-left: 5px;
+            padding-right: 5px;
+            min-width: 100px;
+        }
+        @page {
+            size: legal landscape;
+            margin: 1cm;
+
+        }
+        #logo{
+            width:111px;
+            height:90px;
+            padding-top:10px;
+            margin-left:10px;
+        }
+
+        h2,h3{
+            margin: 0px 0px 0px 0px;
+        }
+        .row{ clear: both; }
+        .col-lg-1 {width:8%;  float:left;}
+        .col-lg-2 {width:16%; float:left;}
+        .col-lg-3 {width:25%; float:left;}
+        .col-lg-4 {width:33%; float:left;}
+        .col-lg-5 {width:42%; float:left;}
+        .col-lg-6 {width:50%; float:left;}
+        .col-lg-7 {width:58%; float:left;}
+        .col-lg-8 {width:66%; float:left;}
+        .col-lg-9 {width:75%; float:left;}
+        .col-lg-10{width:83%; float:left;}
+        .col-lg-11{width:92%; float:left;}
+        .col-lg-12{width:100%; float:left;}
+        </style>
+        <div id="print">
+
 <div id="content" class="table table-bordered" style="border-collapse: collapse; border-spacing: 0; width: 100%;">
     <div class="row">
         <div class="col">
@@ -166,6 +236,7 @@
         </tbody>
     </table>
 </div>
+</div> <!-- end card -->
 <script type="text/javascript">
 
 
@@ -216,28 +287,32 @@
          });
 
     });
-    $('body').on('click', '.pdfbaru', function () {
-        var cari_bulan = $("#cari_bulan").val();
-        var tampil = '1';
-        $.ajax({
-            url: "{{ route('laporan.rincianbku.index') }}" +'/' + tampil +'/cetakpdf',
-            type: "GET",
-            data: 'cari_bulan=' + cari_bulan,
-            success: function (data) {
-                // $('.cetakbku').html(data);//menampilkan data ke dalam modal
-                // window.open(data, '_blank');
-                // var printContent = document.getElementById('userInfo');
-                var WinPrint = window.open('', '', 'width=900,height=650');
-                WinPrint.document.write(data);
-                WinPrint.document.close();
-                WinPrint.focus();
-                WinPrint.print();
-                WinPrint.close();
+    // $('body').on('click', '.pdfbaru', function () {
+    //     var cari_bulan = $("#cari_bulan").val();
+    //     var tampil = '1';
+    //     $.ajax({
+    //         url: "{{ route('laporan.rincianbku.index') }}" +'/' + tampil +'/cetakpdf',
+    //         type: "GET",
+    //         data: 'cari_bulan=' + cari_bulan,
+    //         contentType: 'application/pdf',
+    //         success: function (data) {
+    //             // $('.cetakbku').html(data);//menampilkan data ke dalam modal
+    //             // window.open(data, '_blank');
+    //             // var pdfContent = document.getElementById("pdf-content").innerHTML;
+    //             // var WinPrint = window.open("data:application/pdf,", '', 'width=900,height=650');
+    //             // var WinPrint = window.open();
+    //             // WinPrint.document.write(data);
+    //             // WinPrint.document.close();
+    //             // WinPrint.focus();
+    //             // WinPrint.print();
+    //             // WinPrint.close();
 
-            }
-         });
 
-    });
+
+    //                 }
+    //      });
+
+    // });
     const download_button =
             document.getElementById('download_Btn');
         const content =

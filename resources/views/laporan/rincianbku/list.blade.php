@@ -28,7 +28,7 @@
         <nav>
             <ol class="breadcrumb mb-0">
                 <li class="breadcrumb-item"><a href="javascript:void(0);">Tables</a></li>
-                <li class="breadcrumb-item active" aria-current="page">>Laporan BKU</li>
+                <li class="breadcrumb-item active" aria-current="page">Laporan BKU</li>
             </ol>
         </nav>
     </div>
@@ -99,7 +99,7 @@
             <button id="printbaru" type="button" class="btn btn-outline-info waves-effect waves-light printbaru" disabled="disabled">
                 <span class="btn-label"><i class="fas fa-print"></i></span>Cetak
             </button>
-            <button id="pdfbaru" type="button" class="btn btn-outline-info waves-effect waves-light pdfbaru" disabled="disabled">
+            <button id="pdfbaru" type="button" class="btn btn-outline-info waves-effect waves-light pdfbaru" onclick="viewPDF()" disabled="disabled">
                 <span class="btn-label"><i class="far fa-file-pdf"></i></span>PDF
             </button>
             <button id="exportToExcel" type="button" class="btn btn-outline-info waves-effect waves-light " onClick="$('#countries').tableExport({type: 'excel', mso: {fileFormat: 'xlsx'}});" disabled="disabled">

@@ -50,9 +50,11 @@
         .col-lg-12{width:100%; float:left;}
         </style>
 
+
 </head>
 <body>
     <title>Laporan BKU</title>
+
 <div id="print">
     <div class="row" >
         <div class="col-lg-2" style="left: 20px">
@@ -214,6 +216,17 @@
     </tbody>
 </table>
 </div> <!-- end card -->
+<script type="text/javascript">
+window.addEventListener('load', function () {
+    isPageRendering= false;
+    pageRenderingQueue = null;
+    canvas = document.getElementById('pdf_canvas');
+    canvasContext = canvas.getContext('2d');
+
+    initEvents(); Add events
+    initPDFRenderer(); // render first page
+});
+</script>
 </body>
 </html>
 
