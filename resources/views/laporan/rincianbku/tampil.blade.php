@@ -224,7 +224,7 @@
             type: "GET",
             data: 'cari_bulan=' + cari_bulan,
             success: function (data) {
-            //  $('.pdfbku').html(data);//menampilkan data ke dalam modal
+             $('.cetakbku').html(data);//menampilkan data ke dalam modal
              window.open(data);
             }
          });
