@@ -71,6 +71,7 @@ body {
         }
     </style>
     <style>
+
         .row{ clear: both; }
         .col-lg-1 {width:8%;  float:left;}
         .col-lg-2 {width:16%; float:left;}
@@ -85,6 +86,9 @@ body {
         .col-lg-11{width:92%; float:left;}
         .col-lg-12{width:100%; float:left;}
 </style>
+<script type="text/javascript">
+window.print();
+</script>
 </head>
 <body>
     <div class="container">
