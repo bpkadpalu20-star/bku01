@@ -274,7 +274,7 @@
                                     <div class="mb-3">
                                         <h5 class="fw-semibold text-fixed-white op-12"></h5>
                                     </div>
-                                    <p class="landing-banner-heading mb-3">Coming soon 1</p>
+                                    <p class="landing-banner-heading mb-3">Coming soon 11</p>
 
                                 </div>
                             </div>
