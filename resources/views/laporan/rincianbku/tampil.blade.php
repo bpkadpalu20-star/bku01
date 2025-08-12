@@ -74,7 +74,7 @@
 <div id="content" class="table table-bordered" style="border-collapse: collapse; border-spacing: 0; width: 100%;">
     <div class="row">
         <div class="col">
-            <img src="{{ URL::asset('assets/images/logo palu.png')}}" style="margin-top: 20px; margin-left: 40px; width: 60px; left: 60px;" alt="" />
+            <img src="{{ URL::asset('assets/images/logo Palu.png')}}" style="width: 50px; left: 60px;" alt="logo" class="desktop-logo">
         </div>
         <div class="col align-middle fw-bold text-center text-uppercase" style=" margin-top: 25px; text-align: center; font-size: 16px; font-weight: bold;">
             PEMERINTAH KOTA PALU BUKU KAS PENERIMAAN TAHUN ANGGARAN 2025 {{ old('text',$bulan) }}
