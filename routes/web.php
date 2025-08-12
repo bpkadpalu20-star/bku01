@@ -16,6 +16,7 @@ use App\Http\Controllers\PermissionController;
 use App\Http\Controllers\BkuPenerimaanController;
 use App\Http\Controllers\PaguPenerimanController;
 use App\Http\Controllers\BkuPengeluaranController;
+use App\Http\Controllers\PrinRincianBKUController;
 use App\Http\Controllers\lapBkuPenerimaanController;
 use App\Http\Controllers\lapBkuPengeluaranController;
 use App\Http\Controllers\LaporanRincianBKUController;
@@ -166,7 +167,8 @@ Route::get('/laporan/bku/{id}/tampilcetak', [LaporanBKUController::class, 'tampi
 Route::get('/laporan/rincianbku', [LaporanRincianBKUController::class, 'index'])->name('laporan.rincianbku.index');
 Route::get('/laporan/rincianbku/{id}/tampil', [LaporanRincianBKUController::class, 'tampil'])->name('laporan.rincianbku.tampil');
 Route::get('/laporan/rincianbku/{id}/tampilawal', [LaporanRincianBKUController::class, 'tampilawal'])->name('laporan.rincianbku.tampilawal');
-Route::get('/laporan/rincianbku/{id}/generatePDF', [LaporanRincianBKUController::class, 'generatePDF'])->name('laporan.rincianbku.generatePDF');
+// Route::get('/laporan/rincianbku/cetakbku', [LaporanRincianBKUController::class, 'index'])->name('laporan.rincianbku.cetakbku.index');
+Route::get('/laporan/rincianbku/{id}/cetakpdf', [LaporanRincianBKUController::class, 'cetakpdf'])->name('laporan.rincianbku.cetakpdf');
 Route::get('/laporan/rincianbku/{id}/tampilcetak', [LaporanRincianBKUController::class, 'tampilcetak'])->name('laporan.rincianbku.tampilcetak');
 
 // BKU Penerimaan Routes

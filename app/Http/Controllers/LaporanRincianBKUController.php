@@ -14,6 +14,7 @@ use App\Models\HasilRekapB;
 use Illuminate\Http\Request;
 use App\Models\SaldoRekKoran;
 use App\Models\BkuPengeluaran;
+use Illuminate\Support\Carbon;
 use Barryvdh\DomPDF\Facade\Pdf;
 use Yajra\DataTables\Facades\DataTables;
 use App\Http\Controllers\laporan\Controller;
@@ -710,6 +711,230 @@ class LaporanRincianBKUController extends Controller implements HasMiddleware
 
         ]);
         }
+
     }
+    public function cetakpdf(Request $request)
+    {
+         $bulan = $request->cari_bulan;
+        if ($request->cari_bulan) {
+            $caribulan = Carbon::make($request->cari_bulan)->format("m");
+            $K = 'K';
+            $D = 'D';
+            $January = 'January';
+            $February = 'February';
+            $March = 'March';
+            $April = 'April';
+            $May = 'May';
+            $June = 'June';
+            $July = 'July';
+            $August = 'August';
+            $September = 'September';
+            $October = 'October';
+            $November = 'November';
+            $December = 'December';
+            $bulan = $request->cari_bulan;
+            $rekapa = RekapA::all();
+            $rekapb = RekapB::all();
+            // $NilaiHasilRekapB = Bulan::all();
+            $HasilRekapA = HasilRekapA::select('hasilrekap_a.*')
+                ->where('hasilrekap_a.bulan','like', "%".$request->cari_bulan."%")
+                ->get();
+            $HasilRekapB = HasilRekapB::select('hasilrekap_b.*')
+                ->where('hasilrekap_b.bulan','like', "%".$request->cari_bulan."%")
+                ->get();
+            $NilaiHasilRekapB = Bulan::select('tblbulan.*')
+                ->where('tblbulan.nama_bulan','like', "%".$request->cari_bulan."%")
+                ->get();
+            $countkredit = Bulan::select('tblbulan.*')
+                ->where('tblbulan.status','K')
+                ->where('tblbulan.nama_bulan','like', "%".$request->cari_bulan."%")
+                ->get();
+            $countdebet = Bulan::select('tblbulan.*')
+                ->where('tblbulan.status','D')
+                ->where('tblbulan.nama_bulan','like', "%".$request->cari_bulan."%")
+                ->get();
+            // $bkukredit = Bku::select('bku.*')
+            //     ->where('bku.aktif_bku','PENGELUARAN')
+            //     ->where('bku.bulan','like', "%".$request->cari_bulan."%")
+            //     ->where('bku.aktif','like', "N")
+            //     ->get();
+            $bkukreditJanuary = Bku::select('bku.*')
+                ->where('bku.aktif_bku','PENGELUARAN')
+                ->where('bku.bulan','like', "%".$January."%")
+                ->where('bku.aktif','like', "N")
+                ->get();
+            $bkukreditFebruary = Bku::select('bku.*')
+                ->where('bku.aktif_bku','PENGELUARAN')
+                ->where('bku.bulan','like', "%".$February."%")
+                ->where('bku.aktif','like', "N")
+                ->get();
+            $bkukreditMarch = Bku::select('bku.*')
+                ->where('bku.aktif_bku','PENGELUARAN')
+                ->where('bku.bulan','like', "%".$March."%")
+                ->where('bku.aktif','like', "N")
+                ->get();
+            $bkukreditApril = Bku::select('bku.*')
+                ->where('bku.aktif_bku','PENGELUARAN')
+                ->where('bku.bulan','like', "%".$April."%")
+                ->where('bku.aktif','like', "N")
+                ->get();
+            $bkukreditMay = Bku::select('bku.*')
+                ->where('bku.aktif_bku','PENGELUARAN')
+                ->where('bku.bulan','like', "%".$May."%")
+                ->where('bku.aktif','like', "N")
+                ->get();
+            $bkukreditJune = Bku::select('bku.*')
+                ->where('bku.aktif_bku','PENGELUARAN')
+                ->where('bku.bulan','like', "%".$June."%")
+                ->where('bku.aktif','like', "N")
+                ->get();
+            $bkukreditJuly = Bku::select('bku.*')
+                ->where('bku.aktif_bku','PENGELUARAN')
+                ->where('bku.bulan','like', "%".$July."%")
+                ->where('bku.aktif','like', "N")
+                ->get();
+            $bkukreditAugust = Bku::select('bku.*')
+                ->where('bku.aktif_bku','PENGELUARAN')
+                ->where('bku.bulan','like', "%".$August."%")
+                ->where('bku.aktif','like', "N")
+                ->get();
+            $bkukreditSeptember = Bku::select('bku.*')
+                ->where('bku.aktif_bku','PENGELUARAN')
+                ->where('bku.bulan','like', "%".$September."%")
+                ->where('bku.aktif','like', "N")
+                ->get();
+            $bkukreditOctober = Bku::select('bku.*')
+                ->where('bku.aktif_bku','PENGELUARAN')
+                ->where('bku.bulan','like', "%".$October."%")
+                ->where('bku.aktif','like', "N")
+                ->get();
+            $bkukreditNovember = Bku::select('bku.*')
+                ->where('bku.aktif_bku','PENGELUARAN')
+                ->where('bku.bulan','like', "%".$November."%")
+                ->where('bku.aktif','like', "N")
+                ->get();
+            $bkukreditDecember = Bku::select('bku.*')
+                ->where('bku.aktif_bku','PENGELUARAN')
+                ->where('bku.bulan','like', "%".$December."%")
+                ->where('bku.aktif','like', "N")
+                ->get();
+
+            // $bkudebet = Bku::select('bku.*')
+            //     ->where('bku.aktif_bku','PENERIMAAN')
+            //     ->where('bku.bulan','like', "%".$request->cari_bulan."%")
+            //     ->where('bku.aktif','like', "N")
+            //     ->get();
+            $bkudebetJanuary = Bku::select('bku.*')
+                ->where('bku.aktif_bku','PENERIMAAN')
+                ->where('bku.bulan','like', "%".$January."%")
+                ->where('bku.aktif','like', "N")
+                ->get();
+            $bkudebetFebruary = Bku::select('bku.*')
+                ->where('bku.aktif_bku','PENERIMAAN')
+                ->where('bku.bulan','like', "%".$February."%")
+                ->where('bku.aktif','like', "N")
+                ->get();
+            $bkudebetMarch = Bku::select('bku.*')
+                ->where('bku.aktif_bku','PENERIMAAN')
+                ->where('bku.bulan','like', "%".$March."%")
+                ->where('bku.aktif','like', "N")
+                ->get();
+            $bkudebetApril = Bku::select('bku.*')
+                ->where('bku.aktif_bku','PENERIMAAN')
+                ->where('bku.bulan','like', "%".$April."%")
+                ->where('bku.aktif','like', "N")
+                ->get();
+            $bkudebetMay = Bku::select('bku.*')
+                ->where('bku.aktif_bku','PENERIMAAN')
+                ->where('bku.bulan','like', "%".$May."%")
+                ->where('bku.aktif','like', "N")
+                ->get();
+            $bkudebetJune = Bku::select('bku.*')
+                ->where('bku.aktif_bku','PENERIMAAN')
+                ->where('bku.bulan','like', "%".$June."%")
+                ->where('bku.aktif','like', "N")
+                ->get();
+            $bkudebetJuly = Bku::select('bku.*')
+                ->where('bku.aktif_bku','PENERIMAAN')
+                ->where('bku.bulan','like', "%".$July."%")
+                ->where('bku.aktif','like', "N")
+                ->get();
+            $bkudebetAugust = Bku::select('bku.*')
+                ->where('bku.aktif_bku','PENERIMAAN')
+                ->where('bku.bulan','like', "%".$August."%")
+                ->where('bku.aktif','like', "N")
+                ->get();
+            $bkudebetSeptember = Bku::select('bku.*')
+                ->where('bku.aktif_bku','PENERIMAAN')
+                ->where('bku.bulan','like', "%".$September."%")
+                ->where('bku.aktif','like', "N")
+                ->get();
+            $bkudebetOctober = Bku::select('bku.*')
+                ->where('bku.aktif_bku','PENERIMAAN')
+                ->where('bku.bulan','like', "%".$October."%")
+                ->where('bku.aktif','like', "N")
+                ->get();
+            $bkudebetNovember = Bku::select('bku.*')
+                ->where('bku.aktif_bku','PENERIMAAN')
+                ->where('bku.bulan','like', "%".$November."%")
+                ->where('bku.aktif','like', "N")
+                ->get();
+            $bkudebetDecember = Bku::select('bku.*')
+                ->where('bku.aktif_bku','PENERIMAAN')
+                ->where('bku.bulan','like', "%".$December."%")
+                ->where('bku.aktif','like', "N")
+                ->get();
+            $idbulan = $request->cari_bulan;
+            $SaldoRekKoran = SaldoRekKoran::findOrFail($idbulan);
+            $SaldoRekKoranJanuary = SaldoRekKoran::findOrFail($January);
+        return view('laporan.rincianbku.cetakbku',[
+            'bulan' => $bulan,
+            'rekapa' => $rekapa,
+            'rekapb' => $rekapb,
+            'HasilRekapA' => $HasilRekapA,
+            'HasilRekapB' => $HasilRekapB,
+            'NilaiHasilRekapB' => $NilaiHasilRekapB,
+            'countkredit' => $countkredit,
+            'countdebet' => $countdebet,
+            'bkukreditJanuary' => $bkukreditJanuary,
+            'bkudebetJanuary' => $bkudebetJanuary,
+            'bkukreditFebruary' => $bkukreditFebruary,
+            'bkudebetFebruary' => $bkudebetFebruary,
+            'bkukreditMarch' => $bkukreditMarch,
+            'bkudebetMarch' => $bkudebetMarch,
+            'bkukreditApril' => $bkukreditApril,
+            'bkudebetApril' => $bkudebetApril,
+            'bkukreditMay' => $bkukreditMay,
+            'bkudebetMay' => $bkudebetMay,
+            'bkukreditJune' => $bkukreditJune,
+            'bkudebetJune' => $bkudebetJune,
+            'bkukreditJuly' => $bkukreditJuly,
+            'bkudebetJuly' => $bkudebetJuly,
+            'bkukreditAugust' => $bkukreditAugust,
+            'bkudebetAugust' => $bkudebetAugust,
+            'bkukreditSeptember' => $bkukreditSeptember,
+            'bkudebetSeptember' => $bkudebetSeptember,
+            'bkukreditOctober' => $bkukreditOctober,
+            'bkudebetOctober' => $bkudebetOctober,
+            'bkukreditNovember' => $bkukreditNovember,
+            'bkudebetNovember' => $bkudebetNovember,
+            'bkukreditDecember' => $bkukreditDecember,
+            'bkudebetDecember' => $bkudebetDecember,
+            'SaldoRekKoran' => $SaldoRekKoran,
+            'SaldoRekKoranJanuary' => $SaldoRekKoranJanuary,
+
+        ]);
+        }
+
+    }
+    // public function cetakpdf(Request $request)
+    // {
+    //     $bulan = $request->cari_bulan;
+
+
+    //      return view('laporan.rincianbku.cetakbku',[
+    //         'bulan' => $bulan,
+    //          ]);
+    // }
 
 }

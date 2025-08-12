@@ -220,12 +220,20 @@
         var cari_bulan = $("#cari_bulan").val();
         var tampil = '1';
         $.ajax({
-            url: "{{ route('laporan.rincianbku.index') }}" +'/' + tampil +'/generatePDF',
+            url: "{{ route('laporan.rincianbku.index') }}" +'/' + tampil +'/cetakpdf',
             type: "GET",
             data: 'cari_bulan=' + cari_bulan,
             success: function (data) {
-             $('.cetakbku').html(data);//menampilkan data ke dalam modal
-             window.open(data);
+                // $('.cetakbku').html(data);//menampilkan data ke dalam modal
+                // window.open(data, '_blank');
+                // var printContent = document.getElementById('userInfo');
+                var WinPrint = window.open('', '', 'width=900,height=650');
+                WinPrint.document.write(data);
+                WinPrint.document.close();
+                WinPrint.focus();
+                WinPrint.print();
+                WinPrint.close();
+
             }
          });
 
