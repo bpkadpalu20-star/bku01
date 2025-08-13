@@ -170,7 +170,10 @@ class LaporanRekapPenerimaanController extends Controller implements HasMiddlewa
 
         ]);
 
+        } else {
+            return view('laporan.rekappenerimaan.homebku',[]);
         }
+
     }
     public function tampilawal(Request $request)
     {

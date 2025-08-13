@@ -49,7 +49,17 @@
         .col-lg-11{width:92%; float:left;}
         .col-lg-12{width:100%; float:left;}
         </style>
+<style>
+  @media print {
+    .printable-content {
+      display: block;
+    }
 
+    body {
+      font-size: 12pt;
+    }
+  }
+</style>
 
 </head>
 <body>
@@ -58,7 +68,7 @@
 <div id="print">
     <div class="row" >
         <div class="col-lg-2" style="left: 20px">
-    <img src='{{ URL::asset('assets/images/logo palu.png')}}' height="100" width="100" style="margin-left: 40px">
+    <img src='{{ URL::asset('assets/images/logo palu.png')}}' height="100" width="100" style="margin-left: 40px" alt="logo" class="desktop-logo">
     </div> <!-- end card -->
 <div class="col-lg-8" style="text-align: center">
    <h2>PEMERINTAH KOTA PALU</h2><h2 class="align-middle fw-bold text-center text-uppercase">BUKU KAS TAHUN ANGGARAN 2025 {{ old('text',$bulan) }}</h2>
@@ -216,17 +226,9 @@
     </tbody>
 </table>
 </div> <!-- end card -->
-<script type="text/javascript">
-window.addEventListener('load', function () {
-    isPageRendering= false;
-    pageRenderingQueue = null;
-    canvas = document.getElementById('pdf_canvas');
-    canvasContext = canvas.getContext('2d');
-
-    initEvents(); Add events
-    initPDFRenderer(); // render first page
-});
-</script>
+{{-- <script type="text/javascript">
+window.print();
+</script> --}}
 </body>
 </html>
 

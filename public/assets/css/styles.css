@@ -2,13 +2,13 @@
 [Master Stylesheet]
 
 Project                            :   Valex - HTML5 Bootstrap Admin Template
-Create Date                        :   
-Author & Copyright Ownership       :   Spruko Technologies Private Limited 
+Create Date                        :
+Author & Copyright Ownership       :   Spruko Technologies Private Limited
 Author URL                         :   https://themeforest.net/user/spruko
 Support	                           :   https://support.spruko.com/
 License Details                    :   https://spruko.com/licenses-details
 ------------------------------------------------------------------*/
-/* Table Of Content 
+/* Table Of Content
 variables
 switcher
 accordion
@@ -9217,7 +9217,35 @@ a, button {
   margin-block-start: 0.5rem;
   overflow: auto;
 }
+.scrolltable::-webkit-scrollbar {
+  width: 12px; /* Lebar scrollbar */
+  height: 12px; /* Height for horizontal scrollbar */
+}
 
+.scrolltable::-webkit-scrollbar-track {
+  background: #f1f1f1; /* Warna latar belakang track */
+}
+
+.scrolltable::-webkit-scrollbar-thumb {
+  background: #888; /* Warna thumb (bagian yang digulir) */
+}
+
+.scrolltable::-webkit-scrollbar-thumb:hover {
+  background: #555; /* Warna thumb saat hover */
+}
+.scrolltablevf::-webkit-scrollbar {
+  width: 8px; /* Width for vertical scrollbar */
+  height: 8px; /* Height for horizontal scrollbar */
+}
+
+.scrolltablevf::-webkit-scrollbar-thumb {
+  background-color: #888;
+  border-radius: 4px;
+}
+
+.scrolltablevf::-webkit-scrollbar-track {
+  background-color: #f1f1f1;
+}
 .scrollspy-example-2 {
   height: 21.875;
   overflow: auto;

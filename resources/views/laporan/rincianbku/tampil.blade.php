@@ -287,11 +287,11 @@
          });
 
     });
-    // $('body').on('click', '.pdfbaru', function () {
+    // $('body').on('click', '.printbaru', function () {
     //     var cari_bulan = $("#cari_bulan").val();
     //     var tampil = '1';
     //     $.ajax({
-    //         url: "{{ route('laporan.rincianbku.index') }}" +'/' + tampil +'/cetakpdf',
+    //         url: "{{ route('laporan.rincianbku.index') }}" +'/' + tampil +'/tampilcetak',
     //         type: "GET",
     //         data: 'cari_bulan=' + cari_bulan,
     //         contentType: 'application/pdf',
@@ -300,13 +300,27 @@
     //             // window.open(data, '_blank');
     //             // var pdfContent = document.getElementById("pdf-content").innerHTML;
     //             // var WinPrint = window.open("data:application/pdf,", '', 'width=900,height=650');
-    //             // var WinPrint = window.open();
-    //             // WinPrint.document.write(data);
+    //             var WinPrint = window.open();
+    //             WinPrint.document.write(data);
+    //             WinPrint.document.write('<p style="color: #5B5745; font-family:verdana; font-size:11px; font-style:normal; font-weight:bold;">' );
+    //             WinPrint.document.write('Copyright 2019 Resource Planing System. All rights reserved.</p> </div>');
+
+
+    //             WinPrint.document.close();
+    //             WinPrint.focus();
+    //             WinPrint.print();
+    //             WinPrint.close();
+
+    //             // var mywindow = window.open('', 'Print', 'height=600,width=800');
+
+
+
+    //             // // mywindow.document.write(data);
+
     //             // WinPrint.document.close();
     //             // WinPrint.focus();
     //             // WinPrint.print();
     //             // WinPrint.close();
-
 
 
     //                 }

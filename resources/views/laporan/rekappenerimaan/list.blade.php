@@ -121,6 +121,20 @@
 <div class="pdfpenerimaan"></div>
 <div class="cetakbku"></div>
 <script type="text/javascript">
+$(document).ready(function(){
+        $(document).ready(function () {
+            var tampil = '0';
+            $.ajax({
+                url: "{{ route('laporan.rincianbku.index') }}" +'/' + tampil +'/tampil',
+                type: "GET",
+                data: 'tampil=' + tampil,
+                success: function (data) {
+                    $('.tampilbku').html(data);//menampilkan data ke dalam modal
+                }
+            });
+        });
+
+    });
 $( '#single-select-field' ).select2( {
     theme: "bootstrap-5",
     width: $( this ).data( 'width' ) ? $( this ).data( 'width' ) : $( this ).hasClass( 'w-100' ) ? '100%' : 'style',

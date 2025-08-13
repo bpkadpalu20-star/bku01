@@ -33,10 +33,29 @@ th {
 tr:hover {
     background-color: #ddd;
 }
+.scrolltable::-webkit-scrollbar {
+   width: 12px; /* Lebar scrollbar */
+  height: 12px; /* Height for horizontal scrollbar */
+}
+
+.scrolltable::-webkit-scrollbar-track {
+  background: #f1f1f1; /* Warna latar belakang track */
+}
+
+.scrolltable::-webkit-scrollbar-thumb {
+  background: #888; /* Warna thumb (bagian yang digulir) */
+}
+
+.scrolltable::-webkit-scrollbar-thumb:hover {
+  background: #555; /* Warna thumb saat hover */
+}
 </style>
 <script src="{{ URL::asset('assets/csstable/libs/pdfmake/pdfmake.min.js')}}"></script>
 <script src="{{ URL::asset('assets/csstable/libs/pdfmake/vfs_fonts.js')}}"></script>
-<div id="content" class="tampilan table-responsive">
+
+<div id="content" class="tampilan table-responsive bg-light scrollspy-example p-3 rounded-2 scrolltable" style="height: 1000px" data-bs-spy="scroll" data-bs-target="#navbar-example2" data-bs-offset="0"
+
+                                        data-bs-root-margin="0px 0px -100%" data-bs-smooth-scroll="true" tabindex="0">
     <div class="row">
         <div class="col">
             <img src="{{ URL::asset('assets/images/logo Palu.png')}}" height="100" width="100" style="width: 50px; left: 60px;" alt="logo" class="desktop-logo">
@@ -51,16 +70,16 @@ tr:hover {
     <table id="countries" class="table table-bordered align-middle data-table" style="border-collapse: collapse; border-spacing: 0; width: 100%;">
         <thead>
             <tr>
-                <th width="60px">No</th>
-                <th width="30px">Nomer SP2D/STS</th>
-                <th width="30px">Tanggal</th>
-                <th width="260px">Uraian</th>
-                <th width="80px">Sumber Dana</th>
-                <th width="80px">OPD</th>
-                <th width="80px">Pihak Ketiga</th>
-                <th width="80px">Bank</th>
-                <th width="80px" style="text-align: right">Nilai Penerimaan</th>
-                <th width="80px" style="text-align: right">Nilai Pengeluaran</th>
+                <th width="20px">No</th>
+                <th width="20px">Nomer SP2D/STS</th>
+                <th width="20px">Tanggal</th>
+                <th width="20px">Uraian</th>
+                <th width="20px">Sumber Dana</th>
+                <th width="20px">OPD</th>
+                <th width="20px">Pihak Ketiga</th>
+                <th width="20px">Bank</th>
+                <th width="20px" style="text-align: right">Nilai Penerimaan</th>
+                <th width="20px" style="text-align: right">Nilai Pengeluaran</th>
             </tr>
         </thead>
         <tbody>
@@ -216,14 +235,14 @@ tr:hover {
                     }
             },
         columns: [
-            {data: 'id_bku', name: 'id_bku'},
-            {data: 'no_bku', name: 'no_bku'},
-            {data: 'tanggal_bku', name: 'tanggal_bku'},
-            {data: 'uraian_bku', name: 'uraian_bku'},
-            {data: 'uraian_dana', name: 'uraian_dana'},
-            {data: 'uraian_skpd', name: 'uraian_skpd'},
-            {data: 'nama_rekanan', name: 'nama_rekanan'},
-            {data: 'kode_bank', name: 'kode_bank'},
+            {data: 'kd_bku', name: 'kd_bku', "width": "20px"},
+            {data: 'no_bku', name: 'no_bku', "width": "20px"},
+            {data: 'tanggal_bku', name: 'tanggal_bku', "width": "20px"},
+            {data: 'uraian_bku', name: 'uraian_bku', "width": "20px"},
+            {data: 'uraian_dana', name: 'uraian_dana', "width": "20px"},
+            {data: 'uraian_skpd', name: 'uraian_skpd', "width": "20px"},
+            {data: 'nama_rekanan', name: 'nama_rekanan', "width": "20px"},
+            {data: 'kode_bank', name: 'kode_bank', "width": "20px"},
             // {data: 'nilai_sts',  render: $.fn.dataTable.render.number( ',', '.', 0, '' ), className: 'text-right'},
             // {data: 'nilai_sp2d',  render: $.fn.dataTable.render.number( ',', '.', 0, '' ), className: 'text-right'},
             {data: "nilai_sts", "width": "20px", "orderable": false, "render": function (data, type, row) {
