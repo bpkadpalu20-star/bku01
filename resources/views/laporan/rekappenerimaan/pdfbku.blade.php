@@ -90,7 +90,7 @@ body {
     <div class="container">
         <div class="row">
             <div class="col-lg-2 text">
-                <img src="{{ URL::asset('assets/images/logo Palu.png')}}" style="width: 90px; left: 50px;" height="100" width="100" alt="" class="desktop-logo">
+                <img src="{{ URL::asset('assets/images/logo Palu.png')}}" style="width: 90px; left: 50px;" height="100" width="100" alt=" " class="desktop-logo">
             </div>
             <div class="col-lg-9 text textuppercase">
                 <center>

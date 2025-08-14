@@ -48,7 +48,7 @@
                 <div class="row gy-6">
                     <div class="col-xl-6 col-lg-6 col-md-6 col-sm-12 mb-3">
                         <label for="input-label" class="form-label">No. sts</label>
-                        <input type="text" id="cari_no_bku" name="cari_no_bku" class="form-control penfilter" placeholder="Enter Kode">
+                        <input type="text" id="cari_no_bku" name="cari_no_bku" class="form-control stsfilter" placeholder="Enter Kode">
                     </div>
                     <div class="col-xl-6 col-lg-6 col-md-6 col-sm-12 mb-3">
                         <label for="input-label" class="form-label">No. Rekening</label>

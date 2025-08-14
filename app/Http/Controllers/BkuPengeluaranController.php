@@ -42,10 +42,12 @@ class BkuPengeluaranController extends Controller implements HasMiddleware
 
         $cari_nilai_sp2d = str_replace('.','',$request->cari_nilai_sp2d);
         if ($request->ajax()) {
+
                 $data = Bku::join('dana', 'dana.id', '=' ,'bku.id_dana')
                 ->join('opd', 'opd.id', '=' ,'bku.id_opd')
                 ->join('bank', 'bank.id', '=' ,'bku.id_bank')
                 ->select('bku.*', 'dana.kode_dana', 'opd.uraian_skpd', 'bank.kode_bank')
+                ->where('bku.aktif_bku','PENGELUARAN')
                 ->where('bku.bulan','like',"%".$request->cari_bulan."%")
                 ->where('bku.id_opd','like',"%".$request->cari_id_opd."%")
                 ->where('bku.id_bank','like',"%".$request->cari_id_bank."%")

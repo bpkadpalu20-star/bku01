@@ -59,6 +59,7 @@ class BkuPenerimaanController extends Controller implements HasMiddleware
                 ->join('opd', 'opd.id', '=' ,'bku.id_opd')
                 ->join('bank', 'bank.id', '=' ,'bku.id_bank')
                 ->select('bku.*', 'sub_rincianobjek.uraian_subrincianobjek', 'opd.uraian_skpd', 'bank.kode_bank')
+                ->where('bku.aktif_bku','PENERIMAAN')
                 ->where('bku.bulan','like',"%".$request->cari_bulan."%")
                 ->where('bku.id_opd','like',"%".$request->cari_id_opd."%")
                 ->where('bku.id_bank','like',"%".$request->cari_id_bank."%")

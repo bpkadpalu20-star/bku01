@@ -6,14 +6,14 @@
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.4.1/css/bootstrap-datepicker3.css"/>
 <div class="row gy-6">
     <div class="col-xl-6">
-        <div class="col-xl-12 col-lg-6 col-md-6 col-sm-12 mb-3">
+        <div class="col-xl-12 col-lg-6 col-md-12 col-sm-12 mb-3">
             <label for="input-label" class="form-label">Tanggal Kas</label>
             <input type="text" class="form-control" data-provide="datepicker" id="create_tanggal_bku" name="create_tanggal_bku" data-date-autoclose="true">
             <div class="alert alert-danger print-error-msg" id="alert-create_tanggal_bku" style="display:none">
                 <ul></ul>
             </div>
         </div>
-        <div class="col-xl-12 col-lg-6 col-md-6 col-sm-12 mb-3">
+        <div class="col-xl-12 col-lg-6 col-md-12 col-sm-12 mb-3">
             <label for="input-label" class="form-label">Tanggal STS</label>
             <input type="text"  class="form-control" data-provide="datepicker" id="create_tgl_sts" name="create_tgl_sts" data-date-autoclose="true">
             <div class="alert alert-danger print-error-msg" id="alert-create_tgl_sts" style="display:none">
@@ -21,7 +21,7 @@
             </div>
 
         </div>
-        <div class="col-xl-12 col-lg-6 col-md-6 col-sm-12 mb-3">
+        <div class="col-xl-12 col-lg-6 col-md-12 col-sm-12 mb-3">
             <label for="input-label" class="form-label">OPD</label>
             <select name="create_id_opd" id="create_id_opd" class="form-control" style="width: 400px">
                 <option value="">Select OPD</option>
@@ -35,7 +35,7 @@
                 <ul></ul>
             </div>
         </div>
-        <div class="col-xl-12 col-lg-6 col-md-6 col-sm-12 mb-3">
+        <div class="col-xl-12 col-lg-6 col-md-12 col-sm-12 mb-3">
             <label for="input-label" class="form-label">Bank</label>
             <select name="create_id_bank" id="create_id_bank" class="form-control" style="width: 400px">
                 <option value="">Select Bank</option>
@@ -49,7 +49,7 @@
                 <ul></ul>
             </div>
         </div>
-        <div class="col-xl-12 col-lg-6 col-md-6 col-sm-12 mb-3">
+        <div class="col-xl-12 col-lg-6 col-md-12 col-sm-12 mb-3">
             <label for="input-label" class="form-label">No STS</label>
             <input type="text" class="form-control" id="create_no_bku" name="create_no_bku" placeholder="Enter Kode" value="">
             <div class="alert alert-danger print-error-msg" id="alert-create_no_bku" style="display:none">
@@ -59,7 +59,7 @@
                 <ul></ul>
             </div>
         </div>
-        <div class="col-xl-12 col-lg-6 col-md-6 col-sm-12 mb-3">
+        <div class="col-xl-12 col-lg-6 col-md-12 col-sm-12 mb-3">
             <label for="input-label" class="form-label">Niai</label>
             <input type="text" class="form-control" id="create_nilai_sts" name="create_nilai_sts" placeholder="Enter Kode" value="" style="text-align: right;">
             <div class="alert alert-danger print-error-msg" id="alert-create_nilai_sts" style="display:none">
@@ -68,7 +68,7 @@
         </div>
     </div>
     <div class="col-xl-6">
-        <div class="col-xl-12 col-lg-6 col-md-6 col-sm-12 mb-3">
+        <div class="col-xl-12 col-lg-6 col-md-12 col-sm-12 mb-3">
             <label for="input-label" class="form-label">Rekening Akun</label>
 
             <select name="create_akun" id="create_akun" class="form-control" style="width: 400px">
@@ -83,31 +83,31 @@
                 <ul></ul>
             </div>
         </div>
-        <div class="col-xl-12 col-lg-6 col-md-6 col-sm-12 mb-3">
+        <div class="col-xl-12 col-lg-6 col-md-12 col-sm-12 mb-3">
             <label for="input-label" class="form-label">Rekening kelompok</label>
                 <select class="form-control" name="create_kelompok" id="create_kelompok" style="width: 400px">
                     <option>Select Kelompok</option>
                 </select>
         </div>
-        <div class="col-xl-12 col-lg-6 col-md-6 col-sm-12 mb-3">
+        <div class="col-xl-12 col-lg-6 col-md-12 col-sm-12 mb-3">
             <label for="input-label" class="form-label">Rekening Jenis</label>
                 <select class="form-control" name="create_jenis" id="create_jenis" style="width: 400px">
                     <option>Select Jenis</option>
                 </select>
         </div>
-        <div class="col-xl-12 col-lg-6 col-md-6 col-sm-12 mb-3">
+        <div class="col-xl-12 col-lg-6 col-md-12 col-sm-12 mb-3">
             <label for="input-label" class="form-label">Rekening Objek</label>
                 <select class="form-control" name="create_Objek" id="create_Objek" style="width: 400px">
                     <option>Select Objek</option>
                 </select>
         </div>
-        <div class="col-xl-12 col-lg-6 col-md-6 col-sm-12 mb-3">
+        <div class="col-xl-12 col-lg-6 col-md-12 col-sm-12 mb-3">
             <label for="input-label" class="form-label">Rekening Rincian Objek</label>
                 <select class="form-control" name="create_rincianObjek" id="create_rincianObjek" style="width: 400px">
                     <option>Select Rincian Objek</option>
                 </select>
         </div>
-        <div class="col-xl-12 col-lg-6 col-md-6 col-sm-12 mb-3">
+        <div class="col-xl-12 col-lg-6 col-md-12 col-sm-12 mb-3">
             <label for="input-label" class="form-label">Rekening Sub Rincian Objek</label>
                 <select class="form-control" name="create_subrincianObjek" id="create_subrincianObjek" style="width: 400px">
                     <option value="">Select Sub Rincian Objek</option>
@@ -117,7 +117,7 @@
                 </div>
         </div>
     </div>
-    <div class="col-xl-12 col-lg-6 col-md-6 col-sm-12 mb-3">
+    <div class="col-xl-12 col-lg-6 col-md-12 col-sm-12 mb-3">
         <label for="input-label"  class="control-label">Uraian</label>
         <textarea class="form-control" id="create_uraian_bku" rows="5" name="create_uraian_bku" placeholder="Enter Name" value=""></textarea>
         <div class="alert alert-danger print-error-msg" id="alert-create_uraian_bku" style="display:none">

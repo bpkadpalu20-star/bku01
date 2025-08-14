@@ -851,6 +851,7 @@ $(document).ready(function() {
             processing: true,
             serverSide: true,
             searching: false,
+            // ajax: "{{ route('bku-pengeluaran.index') }}",
             ajax: {
                 url: "{{ route('bku-pengeluaran.index') }}",
                 data: function (d) {

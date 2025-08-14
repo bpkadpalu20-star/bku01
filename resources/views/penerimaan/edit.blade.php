@@ -16,14 +16,14 @@
 <input type="hidden" name="edit_bulan1" id="edit_bulan1" value="{{ old('name',$BkuPenerimaan->bulan) }}">
 <input type="hidden" name="edit_penerimaan_id" id="edit_penerimaan_id" value="{{ old('name',$BkuPenerimaan->id) }}">
     <div class="col-xl-6">
-        <div class="col-xl-12 col-lg-6 col-md-6 col-sm-12 mb-3">
+        <div class="col-xl-12 col-lg-6 col-md-12 col-sm-12 mb-3">
             <label for="input-label" class="form-label">Tanggal Kas</label>
             <input type="text" class="form-control" data-provide="datepicker" value="{{old('tanggal_bku') ? old('tanggal_bku') : Carbon\Carbon::parse($BkuPenerimaan->tanggal_bku)->isoFormat('MM/DD/YYYY')}}" id="edit_tanggal_bku" name="edit_tanggal_bku" data-date-autoclose="true">
             <div class="alert alert-danger print-error-msg" id="alert-edit_tanggal_bku" style="display:none">
                 <ul></ul>
             </div>
         </div>
-        <div class="col-xl-12 col-lg-6 col-md-6 col-sm-12 mb-3">
+        <div class="col-xl-12 col-lg-6 col-md-12 col-sm-12 mb-3">
             <label for="input-label" class="form-label">No STS</label>
             <input type="hidden" class="form-control" value="{{ old('name',$BkuPenerimaan->no_bku) }}" id="edit_baru_sts" name="edit_baru_sts" placeholder="Enter Kode" value="">
             <input type="text" class="form-control" value="{{ old('name',$BkuPenerimaan->no_bku) }}" id="edit_no_bku" name="edit_no_bku" placeholder="Enter Kode" value="">
@@ -34,7 +34,7 @@
                 <ul></ul>
             </div>
         </div>
-        <div class="col-xl-12 col-lg-6 col-md-6 col-sm-12 mb-3">
+        <div class="col-xl-12 col-lg-6 col-md-12 col-sm-12 mb-3">
             <label for="input-label" class="form-label">Tanggal STS</label>
             <input type="text"  class="form-control" data-provide="datepicker" value="{{old('tgl_sts') ? old('tgl_sts') : Carbon\Carbon::parse($BkuPenerimaan->tgl_sts)->isoFormat('MM/DD/YYYY')}}" id="edit_tgl_sts" name="edit_tgl_sts" data-date-autoclose="true">
             <div class="alert alert-danger print-error-msg" id="alert-edit_tgl_sts" style="display:none">
@@ -42,7 +42,7 @@
             </div>
 
         </div>
-        <div class="col-xl-12 col-lg-6 col-md-6 col-sm-12 mb-3">
+        <div class="col-xl-12 col-lg-6 col-md-12 col-sm-12 mb-3">
             <label for="input-label" class="form-label">OPD:</label>
             <select class="form-control" name="edit_id_opd" id="edit_id_opd" style="width: 400px">
                 @foreach($opd as $skpd1)
@@ -56,7 +56,7 @@
                 <ul></ul>
             </div>
         </div>
-        <div class="col-xl-12 col-lg-6 col-md-6 col-sm-12 mb-3">
+        <div class="col-xl-12 col-lg-6 col-md-12 col-sm-12 mb-3">
             <label for="input-label" class="form-label">Bank:</label>
             <select class="form-control" name="edit_id_bank" id="edit_id_bank" style="width: 400px">
                 @foreach($bank as $bank1)
@@ -70,7 +70,7 @@
                 <ul></ul>
             </div>
         </div>
-        <div class="col-xl-12 col-lg-6 col-md-6 col-sm-12 mb-3">
+        <div class="col-xl-12 col-lg-6 col-md-12 col-sm-12 mb-3">
             <label for="input-label" class="form-label">Niai:</label>
             <input type="text" class="form-control" value="{{ old('name',number_format($BkuPenerimaan->nilai_sts, 0, ',', '.')) }}" id="edit_nilai_sts" name="edit_nilai_sts" placeholder="Enter Kode" value="" style="text-align: right;">
             <div class="alert alert-danger print-error-msg" id="alert-edit_nilai_sts" style="display:none">
@@ -79,7 +79,7 @@
         </div>
     </div>
     <div class="col-xl-6">
-        <div class="col-xl-12 col-lg-6 col-md-6 col-sm-12 mb-3">
+        <div class="col-xl-12 col-lg-6 col-md-12 col-sm-12 mb-3">
             <label for="input-label" class="form-label">Rekening Akun</label>
             <select name="edit_akun" id="edit_akun" class="form-control"  style="width: 400px">
                 <option value="">Select Akun</option>
@@ -94,31 +94,31 @@
                 <ul></ul>
             </div>
         </div>
-        <div class="col-xl-12 col-lg-6 col-md-6 col-sm-12 mb-3">
+        <div class="col-xl-12 col-lg-6 col-md-12 col-sm-12 mb-3">
             <label for="input-label" class="form-label">Rekening kelompok</label>
                 <select class="form-control" name="edit_kelompok" id="edit_kelompok" style="width: 400px">
                     <option value="">Select Kelompok</option>
                 </select>
         </div>
-        <div class="col-xl-12 col-lg-6 col-md-6 col-sm-12 mb-3">
+        <div class="col-xl-12 col-lg-6 col-md-12 col-sm-12 mb-3">
             <label for="input-label" class="form-label">Rekening Jenis</label>
                 <select class="form-control" name="edit_jenis" id="edit_jenis" style="width: 400px">
                     <option>Select Jenis</option>
                 </select>
         </div>
-        <div class="col-xl-12 col-lg-6 col-md-6 col-sm-12 mb-3">
+        <div class="col-xl-12 col-lg-6 col-md-12 col-sm-12 mb-3">
             <label for="input-label" class="form-label">Rekening Objek</label>
                 <select class="form-control" name="edit_Objek" id="edit_Objek" style="width: 400px">
                     <option>Select Objek</option>
                 </select>
         </div>
-        <div class="col-xl-12 col-lg-6 col-md-6 col-sm-12 mb-3">
+        <div class="col-xl-12 col-lg-6 col-md-12 col-sm-12 mb-3">
             <label for="input-label" class="form-label">Rekening Rincian Objek</label>
                 <select class="form-control" name="edit_rincianobjek" id="edit_rincianobjek" style="width: 400px">
                     <option>Select Rincian Objek</option>
                 </select>
         </div>
-        <div class="col-xl-12 col-lg-6 col-md-6 col-sm-12 mb-3">
+        <div class="col-xl-12 col-lg-6 col-md-12 col-sm-12 mb-3">
             <label for="input-label" class="form-label">Rekening Sub Rincian Objek</label>
                 <select class="form-control" name="edit_subrincianObjek" id="edit_subrincianObjek" style="width: 400px">
                     <option value="">Select Sub Rincian Objek</option>
@@ -128,7 +128,7 @@
                 </div>
         </div>
     </div>
-    <div class="col-xl-12 col-lg-6 col-md-6 col-sm-12 mb-3">
+    <div class="col-xl-12 col-lg-6 col-md-12 col-sm-12 mb-3">
         <label for="input-label" class="form-label">Uraian:</label>
         <textarea class="form-control" id="edit_uraian_bku" rows="2" name="edit_uraian_bku" placeholder="Enter Name" value="">{{ old('name',$BkuPenerimaan->uraian_bku) }}</textarea>
         <div class="alert alert-danger print-error-msg" id="alert-edit_uraian_bku" style="display:none">

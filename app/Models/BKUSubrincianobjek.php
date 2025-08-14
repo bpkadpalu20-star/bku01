@@ -12,7 +12,7 @@ class BKUSubrincianobjek extends Model
     public $table = "sub_rincianobjek";
 
     protected $fillable = [
-        'id', '	kode_subrincianobjek', '	kode_rincianobjek', '	id_akun', '	id_kelompok', '	id_jenis', '	id_objek', '	id_rincianobjek', '	id_subrincianobjek', '	uraian_subrincianobjek'
+        'id', 'kode_subrincianobjek', 'kd_rincianobjek', 'kode_rincianobjek', 'id_akun', 'id_kelompok', 'id_jenis', 'id_objek', 'id_rincianobjek', 'id_subrincianobjek', 'uraian_subrincianobjek'
 
 
 

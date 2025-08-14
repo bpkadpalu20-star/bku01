@@ -106,10 +106,7 @@ class LaporanBKUController extends Controller implements HasMiddleware
     }
     public function tampil(Request $request)
     {
-        if ($request->tampil == '0') {
-            return view('laporan.bku.homebku',[]);
-
-        } elseif ($request->cari_bulan == 'year') {
+        if ($request->cari_bulan == 'year') {
             $caribulan = '13';
             $bulan1 = TextBulan1::findOrFail($caribulan);
             $bulan = 'Satu'. ' '. $bulan1->nama_bulan;
@@ -143,31 +140,36 @@ class LaporanBKUController extends Controller implements HasMiddleware
                 ]);
 
         } else {
-            $caribulan = Carbon::make($request->cari_bulan)->format("m");
+                $caribulan = Carbon::make($request->cari_bulan)->format("m");
 
-            $bulan1 = TextBulan1::findOrFail($caribulan);
-            $bulan = 'Bulan'. ' '. $bulan1->nama_bulan;
+                $bulan1 = TextBulan1::findOrFail($caribulan);
+                $bulan = 'Bulan'. ' '. $bulan1->nama_bulan;
 
-            $countsts = Bku::join('opd', 'opd.id', '=' ,'bku.id_opd')
-                ->join('bank', 'bank.id', '=' ,'bku.id_bank')
-                ->select('bku.nilai_sts')
-                ->where('bku.aktif','like', 'N')
-                ->where('bku.bulan_id','like', "%".$caribulan."%")
-                ->where('bku.id_opd','like',"%".$request->cari_id_opd."%")
-                ->where('bku.id_bank','like',"%".$request->cari_id_bank."%")
-                ->where('bku.aktif_bku','like',"%".$request->cari_bku."%")
-                ->where('bku.id_dana','like',"%".$request->cari_id_dana."%")
-                ->get();
-            $countsp2d = Bku::join('opd', 'opd.id', '=' ,'bku.id_opd')
-                ->join('bank', 'bank.id', '=' ,'bku.id_bank')
-                ->select('bku.nilai_sp2d')
-                ->where('bku.aktif','like', 'N')
-                ->where('bku.bulan_id','like', "%".$caribulan."%")
-                ->where('bku.id_opd','like',"%".$request->cari_id_opd."%")
-                ->where('bku.id_bank','like',"%".$request->cari_id_bank."%")
-                ->where('bku.aktif_bku','like',"%".$request->cari_bku."%")
-                ->where('bku.id_dana','like',"%".$request->cari_id_dana."%")
-                ->get();
+                $Bku = Bku::join('dana', 'dana.id', '=' ,'bku.id_dana')
+                    ->join('opd', 'opd.id', '=' ,'bku.id_opd')
+                    ->join('bank', 'bank.id', '=' ,'bku.id_bank')
+                    ->select('bku.*', 'dana.kode_dana', 'opd.uraian_skpd', 'bank.kode_bank')
+                    ->where('bku.bulan_id','like', "%".$bulan1->id."%")
+                    ->where('bku.id_opd','like',"%".$request->cari_id_opd."%")
+                    ->where('bku.id_bank','like',"%".$request->cari_id_bank."%")
+                    ->where('bku.aktif_bku','like',"%".$request->cari_bku."%")
+                    ->where('bku.id_dana','like',"%".$request->cari_id_dana."%")
+                    ->get();
+
+                $countsts = Bku::select('bku.nilai_sts')
+                    ->where('bku.bulan_id','like', "%".$bulan1->id."%")
+                    ->where('bku.id_opd','like',"%".$request->cari_id_opd."%")
+                    ->where('bku.id_bank','like',"%".$request->cari_id_bank."%")
+                    ->where('bku.aktif_bku','like',"%".$request->cari_bku."%")
+                    ->where('bku.id_dana','like',"%".$request->cari_id_dana."%")
+                    ->get();
+                $countsp2d = Bku::select('bku.nilai_sp2d')
+                    ->where('bku.bulan_id','like', "%".$bulan1->id."%")
+                    ->where('bku.id_opd','like',"%".$request->cari_id_opd."%")
+                    ->where('bku.id_bank','like',"%".$request->cari_id_bank."%")
+                    ->where('bku.aktif_bku','like',"%".$request->cari_bku."%")
+                    ->where('bku.id_dana','like',"%".$request->cari_id_dana."%")
+                    ->get();
                 // return view('laporan.bku.tampil',[]);
                 return view('laporan.bku.tampil',[
 
